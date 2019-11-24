@@ -2,7 +2,7 @@
 # Update dotfiles
 # Usage: update <names> or update all or update list
 
-available="bashrc nanorc neofetch gtk herbstluftwm polybar"
+available="bashrc nanorc neofetch gtk herbstluftwm polybar xfce4-terminal"
 [[ -z "$*" ]] && echo "Usage: update <names> or update all or update list" && exit 1
 [[ "$*" == *"list"* ]] && echo "$available"
 
@@ -15,12 +15,13 @@ cd $(dirname "$0")
 
 for f in $tocopy; do
     case $f in
-              bashrc) cp -f ~/.bashrc .config/bashrc;;
-              nanorc) cp -rf ~/.nanorc .config/nanorc;;
-            neofetch) cp -rf ~/.config/neofetch .config;;
-                 gtk) cp -rf ~/.config/gtk-3.0 .config; cp -f ~/.gtkrc-2.0 .config/gtkrc-2.0;;
-        herbstluftwm) cp -rf ~/.config/herbstluftwm .config; grep -v "xflux" .config/herbstluftwm/autostart > .config/herbstluftwm/autostart-tmp; mv .config/herbstluftwm/autostart-tmp .config/herbstluftwm/autostart;;
-             polybar) cp -rf ~/.config/polybar .config;;
+                bashrc) cp -f ~/.bashrc .config/bashrc;;
+                nanorc) cp -rf ~/.nanorc .config/nanorc;;
+              neofetch) cp -rf ~/.config/neofetch .config;;
+                   gtk) cp -rf ~/.config/gtk-3.0 .config; cp -f ~/.gtkrc-2.0 .config/gtkrc-2.0;;
+          herbstluftwm) cp -rf ~/.config/herbstluftwm .config; grep -v "xflux" .config/herbstluftwm/autostart > .config/herbstluftwm/autostart-tmp; mv .config/herbstluftwm/autostart-tmp .config/herbstluftwm/autostart;;
+               polybar) cp -rf ~/.config/polybar .config;;
+		xfce4-terminal) [[ ! -e .config/xfce4 ]] && mkdir .config/xfce4; cp -r ~/.config/xfce4/terminal .config/xfce4/;;
     esac
 done
 

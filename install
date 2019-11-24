@@ -2,7 +2,7 @@
 # Dotfile installer
 # Usage: install <files> or install all or install list
 
-available="bashrc nanorc neofetch gtk herbstluftwm polybar"
+available="bashrc nanorc neofetch gtk herbstluftwm polybar xfce4-terminal"
 [[ -z "$*" ]] && echo "Usage: install <names> or install all or install list" && exit 1
 [[ "$*" == *"list"* ]] && echo "$available"
 
@@ -15,12 +15,13 @@ cd $(dirname "$0")
 
 for f in $tocopy; do
 	case $f in
-		      bashrc) cp .config/bashrc ~/.bashrc;;
-		      nanorc) cp .config/nanorc ~/.nanorc;;
-		    neofetch) cp -r .config/neofetch ~/.config;;
-		         gtk) cp -r .config/gtk-3.0 ~/.config; cp .config/gtkrc-2.0 ~/.gtkrc-2.0;;
-		herbstluftwm) cp -r .config/herbstluftwm ~/.config;;
-		     polybar) cp -r .config/polybar ~/.config;;
+		        bashrc) cp .config/bashrc ~/.bashrc;;
+		        nanorc) cp .config/nanorc ~/.nanorc;;
+		      neofetch) cp -r .config/neofetch ~/.config;;
+		           gtk) cp -r .config/gtk-3.0 ~/.config; cp .config/gtkrc-2.0 ~/.gtkrc-2.0;;
+		  herbstluftwm) cp -r .config/herbstluftwm ~/.config;;
+		       polybar) cp -r .config/polybar ~/.config;;
+		xfce4-terminal) [[ ! -e ~/.config/xfce4 ]] && mkdir ~/.config/xfce4; cp -r .config/xfce4/terminal ~/.config/xfce4/;;
 	esac
 done
 
