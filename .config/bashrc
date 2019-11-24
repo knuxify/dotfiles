@@ -1,0 +1,82 @@
+#!/bin/bash
+#-------------------------------#
+#      knuxfanwin8's bashrc     #
+#      rev. B                   #
+#-------------------------------#
+
+PS1="\W \[\e[0m\]> \[$(tput sgr0)\]"
+
+alias grep='grep --colour=auto'
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+# Add local bin folder to path.
+export PATH=$PATH:~/.bin
+
+xhost +local:root > /dev/null 2>&1
+complete -cf sudo
+shopt -s checkwinsize; shopt -s expand_aliases; shopt -s histappend
+
+# Some useful variables
+gh="https://github.com"
+export EDITOR=nano
+
+alias ls="ls -sh --color"
+alias als="ls -shA --color"
+
+# proj - create a project or cd into one
+# usage: proj [project name or git link]
+proj() {
+	[[ ! -e "$HOME/Projects" ]] && mkdir "$HOME/Projects"
+	if [ -e "$HOME/Projects/$*" ]; then
+		cd "$HOME/Projects/$*"
+	else
+		projectnolink="${*/.git/}"; projectnolink="${projectnolink##*/}"
+		read -p "$projectnolink does not exist. Press any button to create." -ren1
+		if [[ "$*" = "https://github.com"* ]] || [[ "$*" = "https://gitlab.com"* ]] || [[ "$*" = *".git" ]]; then
+    		cd $HOME/Projects; git clone $*; cd "$projectnolink"
+		else
+    		cd $HOME/Projects; mkdir $*; cd $*
+		fi
+	fi
+}
+
+# today-i - daily activity logger
+# usage today-i <did stuff>
+today-i() {
+	[[ ! -e ~/today ]] && mkdir ~/today
+	date +%H:%M >> ~/today/$(date +%Y-%m-%d)
+	echo "$*" >> ~/today/$(date +%Y-%m-%d)
+}
+
+alias rb="source ~/.bashrc"
+
+# Get software. Aliased to shoppe, making it work out of the box on every supported system.
+alias pget="shoppe install --noconfirm"
+alias prem="shoppe remove --noconfirm"
+
+alias tilde="mosh -ssh 'ssh -i ~/.ssh/tilde.town' knuxify@tilde.town"
+
+alias touchtoggle="xinput --set-prop 'AlpsPS/2 ALPS GlidePoint' 315 $1"
+
+echo "hi $USER""@$(hostname)! it is currently $(date +%H:%M)"
+echo -e "\e[31m"
+if [[ -e ~/TODO ]] && [[ -s ~/TODO ]]; then
+	figlet "todo:"
+	while IFS="" read -r line || [[ -n "$line" ]]; do [[ "$line" != "#"* ]] && echo "$line"; done < ~/TODO
+fi
+echo -e "\e[0mdon't forget to run \e[31mtoday-i\e[0m when you're done with a task!\n"
+export PATH="$PATH:/home/knuxfanwin8/.gem/ruby/2.6.0/bin"
+
+reloadbar() {
+	killall polybar
+	polybar bottom &>/dev/null &
+}
+
+owo() {
+	trap "" SIGINT
+	while true; do printf "owo "; done
+}
