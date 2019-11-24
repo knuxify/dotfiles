@@ -16,7 +16,7 @@ cd $(dirname "$0")
 for f in $tocopy; do
     case $f in
               bashrc) cp -f ~/.bashrc .config/bashrc;;
-              nanorc) cp -rf ~/.config/nanorc .config;;
+              nanorc) cp -rf ~/.nanorc .config/nanorc;;
             neofetch) cp -rf ~/.config/neofetch .config;;
                  gtk) cp -rf ~/.config/gtk-3.0 .config; cp -f ~/.gtkrc-2.0 .config/gtkrc-2.0;;
         herbstluftwm) cp -rf ~/.config/herbstluftwm .config; grep -v "xflux" .config/herbstluftwm/autostart > .config/herbstluftwm/autostart-tmp; mv .config/herbstluftwm/autostart-tmp .config/herbstluftwm/autostart;;

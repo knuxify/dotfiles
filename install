@@ -16,7 +16,7 @@ cd $(dirname "$0")
 for f in $tocopy; do
 	case $f in
 		      bashrc) cp .config/bashrc ~/.bashrc;;
-		      nanorc) cp .config/nanorc ~/.config/nanorc;;
+		      nanorc) cp .config/nanorc ~/.nanorc;;
 		    neofetch) cp -r .config/neofetch ~/.config;;
 		         gtk) cp -r .config/gtk-3.0 ~/.config; cp .config/gtkrc-2.0 ~/.gtkrc-2.0;;
 		herbstluftwm) cp -r .config/herbstluftwm ~/.config;;
