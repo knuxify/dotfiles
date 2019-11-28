@@ -14,7 +14,6 @@ killall polybar;
 hc spawn polybar bottom
 hc spawn compton
 hc spawn nitrogen --restore
-workflow-timer
 setxkbmap pl
 
 xsetroot -solid '#5A8E3A'
