@@ -1,13 +1,13 @@
 [colors]
 background = #1D2031
 foreground = #ffffff
-darkbg = #DE2E54
+darkbg = #242424
 darkfg = #fff
 
 [bar/bottom]
 ;background = $(colors.background)
 ;foreground = $(colors.foreground)
-background=#BC1729
+background=#181818
 foreground=#ffffff
 
 bottom = true
@@ -19,11 +19,10 @@ modules-center = workspaces
 modules-right = volume battery clock
 height = 30
 ;border-size = 2
-;border-top-color = #DE2E54
-;border-left-color = #DE2E54
+;border-top-color = #242424
+;border-left-color = #242424
 ;border-bottom-color = #121212
 ;border-right-color = #121212
-radius-top = 10px;
 padding-left = 1
 padding-right = 1
 offset-x = 10
@@ -40,15 +39,9 @@ font-3 = Font Awesome 5 Brands:pixelsize=10;2
 type = internal/battery
 battery = BAT0
 adapter = AC
-format-discharging = <ramp-capacity> <label-discharging>
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
 label-charging =  %percentage%%
-label-discharging = %percentage%%
-label-full = %percentage%%
+label-discharging =  %percentage%%
+label-full =  %percentage%%
 
 [module/clock]
 type = internal/date
@@ -68,10 +61,10 @@ pin-workspaces = true
 enable-scroll = false
 label-empty = " %index% "
 ;label-foreground = #ffffff
-;label-background = #DE2E54
+;label-background = #242424
 label-active = "[%index%]"
 label-active-foreground = #ffffff
-label-active-background = #DE2E54
+label-active-background = #242424
 label-active-underline = #0A84FF
 label-urgent = " %index% [!]"
 
@@ -86,36 +79,3 @@ label-muted-foreground = #666
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
-
-[bar/button]
-background=#BC1729
-foreground=#ffffff
-
-top = true
-left = true
-width = 35px
-modules-center = loadmenu
-height = 20px
-;border-size = 2
-;border-top-color = #DE2E54
-;border-left-color = #DE2E54
-;border-bottom-color = #121212
-;border-right-color = #121212
-radius-bottom = 10px;
-;padding-left = 1
-offset-x = -5px
-padding-right = 2px
-
-;offset-x = 10px:10px
-separator = " | "
-fixed-center = true
-font-0 = undefined medium:size=10;2
-font-1 = Font Awesome 5 Free:pixelsize=10;2
-font-2 = Font Awesome 5 Free Solid:pixelsize=10;2
-font-3 = Font Awesome 5 Brands:pixelsize=10;2
-
-[module/loadmenu]
-type = custom/script
-exec = echo "  ↓  "
-;click-left = /home/knuxfanwin8/bin/rofilink &>/dev/null
-click-left = rofi -modi drun -show drun -theme ~/.config/rofi/onedark -show-icons -drun-icon-theme Papirus &>/dev/null &
