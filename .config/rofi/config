@@ -1,0 +1,5 @@
+rofi.modi drun
+rofi.show drun 
+rofi.theme ~/.config/rofi/onedark 
+rofi.show-icons 
+rofi.drun-icon-theme Papirus
