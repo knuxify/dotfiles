@@ -48,7 +48,7 @@ ramp-capacity-3 = 
 ramp-capacity-4 = 
 label-charging =  %percentage%%
 label-discharging = %percentage%%
-label-full = %percentage%%
+label-full =  %percentage%%
 
 [module/clock]
 type = internal/date
