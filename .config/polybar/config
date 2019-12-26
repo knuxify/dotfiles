@@ -31,10 +31,11 @@ width = 100%:-20
 ;offset-x = 10px:10px
 separator = " | "
 fixed-center = true
-font-0 = DEC Terminal:size=10;2
-font-1 = Font Awesome 5 Free:pixelsize=10;2
-font-2 = Font Awesome 5 Free Solid:pixelsize=10;2
-font-3 = Font Awesome 5 Brands:pixelsize=10;2
+font-0 = Terminus (TTF):size=10;2
+font-1 = Font Awesome:pixelsize=10;2
+font-2 = Font Awesome 5 Free:pixelsize=10;2
+font-3 = Font Awesome 5 Free Solid:pixelsize=10;2
+font-4 = Font Awesome 5 Brands:pixelsize=10;2
 
 [module/battery]
 type = internal/battery
