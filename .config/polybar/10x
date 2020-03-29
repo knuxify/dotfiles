@@ -1,0 +1,99 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;       Colors        ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+[colors]
+lightbg = #888888
+darkbg = #3A3A3A
+darkerbg = #333333
+fg = #B0B0B0
+
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;    Bar settings     ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+[bar/bottom]
+; Positioning
+height = 24px
+width = 100%
+padding-right = 2px
+padding-left = 2px
+bottom = yes
+fixed-center = true
+
+; Styling
+background = ${colors.darkbg}
+foreground = ${colors.fg}
+separator = "  "
+
+; Modules
+modules-center = launch
+modules-right = volume battery clock
+
+; Fonts
+;;; Main
+font-0 = Segoe UI:size=10:weight=Semibold;2
+;;; Font Awesome 5
+font-1 = Font Awesome 5 Free:pixelsize=12;2
+font-2 = Font Awesome 5 Free Solid:pixelsize=12;2
+font-3 = Font Awesome 5 Brands:pixelsize=12;2
+;;; Font Awesome 4, some glyphs missing
+font-4 = FontAwesome:pixelsize=12;2
+font-5 = Font Awesome:pixelsize=12;2
+
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;       Modules       ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Launch (application menu)
+[module/launch]
+type = custom/text
+content = "                        "
+click-left = tint2 &>/dev/null
+
+[module/workspaces]
+type = internal/xworkspaces
+pin-workspaces = true
+enable-scroll = false
+label-empty = "%icon%"
+label-active = "%icon%"
+label-urgent = "%icon%"
+label-empty-padding = 1px
+label-active-padding = 1px
+label-urgent-padding = 1px
+label-active-foreground = ${colors.fg}
+label-active-background = ${colors.lightbg}
+
+icon-0 = 1;
+icon-1 = 2;
+icon-2 = 3;
+icon-3 = 4;
+
+[module/volume]
+type = internal/pulseaudio
+use-ui-max = true
+interval = 5
+format-volume = <ramp-volume>
+label-muted = 
+label-muted-foreground = #888
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+format-discharging = <ramp-capacity>
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+label-charging =  
+label-discharging = 
+label-full =  
+
+[module/clock]
+type = internal/date
+interval = 1.0
+time = %H:%M:%S
+label = %time%
