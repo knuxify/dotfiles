@@ -2,7 +2,7 @@
 # Update dotfiles
 # Usage: update <names> or update all or update list
 
-available="bashrc nanorc neofetch gtk herbstluftwm polybar xfce4-terminal rofi backgrounds"
+available="bashrc nanorc neofetch gtk herbstluftwm polybar xfce4-terminal rofi backgrounds jgmenu"
 [[ -z "$*" ]] && echo "Usage: update <names> or update all or update list" && exit 1
 [[ "$*" == *"list"* ]] && echo "$available"
 
@@ -24,6 +24,7 @@ for f in $tocopy; do
 		xfce4-terminal) [[ ! -e .config/xfce4 ]] && mkdir .config/xfce4; cp -r ~/.config/xfce4/terminal .config/xfce4/;;
 		          rofi) cp -r ~/.config/rofi .config;;
 		   backgrounds) cp -r ~/.backgrounds .;;
+		        jgmenu) cp -r ~/.config/jgmenu .config;;
     esac
 done
 
