@@ -13,6 +13,10 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+alias rb="source ~/.bashrc"
+alias ls="ls -sh --color"
+alias als="ls -shA --color"
+
 # Add local bin folder to path.
 export PATH=$PATH:~/.bin
 
@@ -24,26 +28,24 @@ shopt -s checkwinsize; shopt -s expand_aliases; shopt -s histappend
 gh="https://github.com"
 export EDITOR=nano
 
-alias ls="ls -sh --color"
-alias als="ls -shA --color"
-
 # proj - create a project or cd into one
 # usage: proj [project name or git link]
 proj() {
-	[[ ! -e "$HOME/Projects" ]] && mkdir "$HOME/Projects"
-	if [ -e "$HOME/Projects/$*" ]; then
-		cd "$HOME/Projects/$*"
+	[[ ! -e "$HOME/projects" ]] && mkdir "$HOME/projects"
+	if [ -e "$HOME/projects/$*" ]; then
+		cd "$HOME/projects/$*"
 	else
 		projectnolink="${*/.git/}"; projectnolink="${projectnolink##*/}"
 		read -p "$projectnolink does not exist. Press any button to create." -ren1
 		if [[ "$*" = "https://github.com"* ]] || [[ "$*" = "https://gitlab.com"* ]] || [[ "$*" = *".git" ]]; then
-    		cd $HOME/Projects; git clone $*; cd "$projectnolink"
+    		cd $HOME/projects; git clone $*; cd "$projectnolink"
 		else
-    		cd $HOME/Projects; mkdir $*; cd $*
+    		cd $HOME/projects; mkdir $*; cd $*
 		fi
 	fi
 }
-
+_pcomp() { COMPREPLY=($(ls -fA ~/projects)); }
+complete -F _pcomp proj
 # today-i - daily activity logger
 # usage today-i <did stuff>
 today-i() {
@@ -52,13 +54,21 @@ today-i() {
 	echo "$*" >> ~/today/$(date +%Y-%m-%d)
 }
 
-alias rb="source ~/.bashrc"
-
 # Get software. Aliased to shoppe, making it work out of the box on every supported system.
 alias pget="shoppe install --noconfirm"
 alias prem="shoppe remove --noconfirm"
 
 alias tilde="mosh -ssh 'ssh -i ~/.ssh/tilde.town' knuxify@tilde.town"
+
+hack() {
+	unset huser
+	[[ $2 ]] && huser="$2""@"
+	case $1 in
+		hc1|susie|104) ssh ${huser}192.168.1.104;;
+		satellite|mc|lancer|114) ssh ${huser}192.168.1.111;;
+		pi|muffet) ssh ${huser}192.168.1.103;;
+	esac
+}
 
 alias touchtoggle="xinput --set-prop 'AlpsPS/2 ALPS GlidePoint' 315 $1"
 
@@ -71,12 +81,56 @@ fi
 echo -e "\e[0mdon't forget to run \e[31mtoday-i\e[0m when you're done with a task!\n"
 export PATH="$PATH:/home/knuxfanwin8/.gem/ruby/2.6.0/bin"
 
-reloadbar() {
-	killall polybar
-	polybar bottom &>/dev/null &
+masochist-mode() {
+	# masochist-mode - set up cm building environment
+	[[ "$1" ]] || {
+		echo "no directory specified!"
+		return 1
+	}
+	echo "Are you sure you want to waste the next ~24 hours? [Y/n] Y"
+	cd ~/"$1"
+	source ~/lineage/android/venv/bin/activate
+	source build/envsetup.sh
+	export JAVA_HOME=/usr/lib/jvm/java-7-openjdk
+	echo -e "\e[1;31mMASOCHIST MODE\e[0m enabled."
 }
 
-owo() {
-	trap "" SIGINT
-	while true; do printf "owo "; done
+alias sng="youtube-dl -x --audio-format=mp3 --add-metadata --embed-thumbnail"
+
+# mainline tools
+
+mainline-tools() {
+	if [[ -z "$mainlinetools" ]]; then
+		[[ -e ~/projects/code ]] && mv ~/projects/code ~/code
+		cd ~/code/linux
+		pmbootstrap chroot -- apk add abootimg android-tools mkbootimg dtbtool
+		export DEVICE="$(pmbootstrap config device)"
+		export WORK="$(pmbootstrap config work)"
+		export TEMP="$WORK/chroot_native/tmp/mainline/"
+		mkdir -p "$TEMP"
+		source ~/code/pmbootstrap/helpers/envkernel.sh
+		export mainlinetools='enabled'
+	elif [[ -z "$*" ]]; then
+		echo "nothing to do!"
+		return 1
+	else
+		if [[ "$1" == "build" ]]; then
+			case $2 in
+				"") defconfig="bcm23550_defconfig";;
+				*) defconfig="$2";;
+			esac
+			make $defconfig || return 1
+			make -j5 || return 1
+			echo "[mainline-tools] Packaging..."
+			read -rep "[mainline-tools] Run pmbootstrap export? [y/N] " tmp
+			if [[ "$tmp" == "y" ]] || [[ "$tmp" == "Y" ]]; then pmbootstrap export || return 1; fi
+			cd ~/code/linux/.output/arch/arm/boot
+			cat zImage dts/bcm23550-baffinlite.dtb > ~/code/linux/.zImage-dtb
+			cp ~/code/linux/.zImage-dtb "$TEMP"/zImage-dtb
+			cp "/tmp/postmarketOS-export/boot.img-$DEVICE" "$TEMP/boot.img"
+			pmbootstrap chroot -- abootimg -u /tmp/mainline/boot.img  -k /tmp/mainline/zImage-dtb
+			rm ~/boot.img
+			cp ~/.local/var/pmbootstrap/chroot_native/tmp/mainline/boot.img ~/boot.img
+		fi
+	fi
 }

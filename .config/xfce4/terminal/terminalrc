@@ -27,11 +27,13 @@ MiscNewTabAdjacent=FALSE
 MiscSearchDialogOpacity=100
 MiscShowUnsafePasteDialog=TRUE
 FontName=Terminus (TTF) Medium 12
-ColorForeground=#abb2bf
-ColorBackground=#282c34
-ColorCursor=x
-ColorPalette=rgb(40,44,52);rgb(224,108,117);rgb(152,195,121);rgb(229,192,123);rgb(97,175,239);rgb(198,120,221);rgb(86,182,194);rgb(171,178,191);rgb(84,88,98);rgb(245,148,155);rgb(194,224,172);rgb(199,180,145);rgb(163,198,226);rgb(205,156,220);rgb(144,199,206);rgb(215,219,226)
 BackgroundDarkness=1.000000
 ScrollingLines=10000
 ScrollingUnlimited=TRUE
+ColorForeground=#c5c8c6
+ColorBackground=#1d1f21
+ColorCursor=x
+ColorPalette=#1d1f21;#cc6666;#b5bd68;#f0c674;#81a2be;#b294bb;#8abeb7;#c5c8c6;#969896;#cc6666;#b5bd68;#f0c674;#81a2be;#b294bb;#8abeb7;#ffffff
+ColorBoldIsBright=FALSE
+ScrollingOnOutput=FALSE
 

@@ -50,7 +50,7 @@ font-5 = Font Awesome:pixelsize=12;2
 type = custom/text
 content = "                    "
 content-background = ${colors.darkbg}
-click-left = jgmenu &>/dev/null
+click-left = jgmenu_run &>/dev/null
 content-underline = #4b8ab7
 
 [module/workspaces]
@@ -66,7 +66,7 @@ label-urgent-padding = 2px
 label-active-foreground = ${colors.fg}
 label-active-background = ${colors.lightbg}
 label-active-underline = #4b8ab7
-label-empty-underline = #383838
+label-empty-underline = #282828
 label-urgent-underline = #70cbe0
 
 icon-0 = 1;
@@ -78,13 +78,11 @@ content-background = $(colors.darkbg}
 
 [module/spotify]
 type = custom/script
-interval = 1
+interval = 0.25
 format = <label>
-format-prefix = " "
 format-background = #88000000
-format-padding = 3
-format-underline = #4b8ab7
-exec = python /home/knuxify/.config/polybar/polybar-spotify/spotify_status.py -f '{artist} - {song}'
+exec = python /home/knuxify/.config/polybar/polybar-spotify/spotify_status.py -f '{play_pause}    {artist} - {song}   '
+click-left = dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 
 [module/volume]
 type = internal/pulseaudio

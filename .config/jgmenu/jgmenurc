@@ -1,21 +1,28 @@
 # knuxify's jgmenu config
 stay_alive = 0
 csv_no_dirs = 1
+csv_cmd = pmenu
 
-# Styling
-@search,^root(),0,0,100%,50,10
-menu-width = 800
-menu-radius = 3
+# Sizing and positioning
+menu_width = 400
 menu_height_min = 400
 menu_height_max = 400
 columns = 2
 menu_halign = center
 menu_valign = center
+menu_padding_top = 24
+
+# Styling
+menu_border = 2
+menu_radius = 0
+color_menu_bg = #161616 90
+color_menu_border = #4b8ab7 100
 icon_theme = Papirus
+item_padding_x = 5
+item_margin_y = 6
 
 # verbosity = 0
 # hide_on_startup = 0
-# csv_cmd = pmenu
 # tint2_look = 0
 # position_mode = fixed
 # edge_snap_x = 30
@@ -49,7 +56,6 @@ icon_theme = Papirus
 # item_margin_x = 3
 # item_margin_y = 3
 # item_height = 25
-# item_padding_x = 4
 # item_radius = 1
 # item_border = 0
 # item_halign = left
