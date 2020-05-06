@@ -23,4 +23,14 @@
       </metadata>
     </info>
   </bookmark>
+  <bookmark href="smb://192.168.1.104/" added="2020-03-07T12:14:16Z" modified="2020-03-07T12:14:16Z" visited="2020-03-07T12:14:16Z">
+    <title>Windows shares on 192.168.1.104</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="LibreOffice 6.4" exec="&apos;soffice %u&apos;" modified="2020-03-07T12:14:16Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
 </xbel>
