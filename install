@@ -2,7 +2,7 @@
 # Dotfile installer
 # Usage: install <files> or install all or install list
 
-available="bashrc nanorc neofetch gtk herbstluftwm polybar xfce4-terminal rofi backgrounds"
+available="bashrc nanorc neofetch gtk herbstluftwm polybar xfce4-terminal rofi backgrounds jgmenu"
 [[ -z "$*" ]] && echo "Usage: install <names> or install all or install list" && exit 1
 [[ "$*" == *"list"* ]] && echo "$available"
 
