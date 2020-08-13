@@ -1,0 +1,135 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;       Colors        ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+[colors]
+lightbg = #55000000
+darkbg = #55000000
+darkerbg = #161616
+fg = #fff
+
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;    Bar settings     ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+[bar/bottom]
+; Positioning
+height = 32px
+width = 100%
+padding-right = 4px
+padding-left = 4px
+bottom = yes
+fixed-center = true
+
+; Styling
+background = transparent
+foreground = ${colors.fg}
+separator = " "
+line-size = 2px
+
+; Modules
+modules-left = launch
+modules-center = workspaces
+modules-right = spotify volume battery clock
+
+; Fonts
+;;; Main
+font-0 = Segoe UI:size=11:weight=Regular;2
+;;; Font Awesome 5
+font-1 = Font Awesome 5 Free:pixelsize=12;2
+font-2 = Font Awesome 5 Free Solid:pixelsize=12;2
+font-3 = Font Awesome 5 Brands:pixelsize=12;2
+;;; Font Awesome 4, some glyphs missing
+font-4 = FontAwesome:pixelsize=12;2
+font-5 = Font Awesome:pixelsize=12;2
+
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;       Modules       ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Launch (application menu)
+[module/launch]
+type = custom/text
+content = "                    "
+content-background = ${colors.darkbg}
+click-left = jgmenu_run &>/dev/null
+content-underline = #4b8ab7
+
+[module/workspaces]
+type = internal/xworkspaces
+pin-workspaces = true
+enable-scroll = false
+label-empty = "%icon%"
+label-active = "%icon%"
+label-urgent = "%icon%"
+label-empty-padding = 2px
+label-active-padding = 2px
+label-urgent-padding = 2px
+label-active-foreground = ${colors.fg}
+label-active-background = ${colors.lightbg}
+label-active-underline = #4b8ab7
+label-empty-underline = #282828
+label-urgent-underline = #70cbe0
+
+icon-0 = 1;
+icon-1 = 2;
+icon-2 = 3;
+icon-3 = 4;
+
+content-background = $(colors.darkbg}
+
+[module/spotify]
+type = custom/script
+interval = 0.25
+format = <label>
+format-background = #88000000
+exec = python /home/knuxify/.config/polybar/polybar-spotify/spotify_status.py -f '{play_pause}    {artist} - {song}   '
+click-left = dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+
+[module/volume]
+type = internal/pulseaudio
+use-ui-max = true
+interval = 5
+format-volume = <ramp-volume> <label-volume>
+label = %percentage%
+label-muted = 
+label-muted-foreground = #ddd
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+format-volume-background = #88000000
+format-volume-padding = 3
+fo rmat-volume-underline = #4b8ab7
+format-muted-background = #88000000
+format-muted-padding = 3
+format-muted-underline = #282828
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+format-discharging = <ramp-capacity> <label-discharging>
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+label-charging = "  %percentage%%"
+label-discharging = "%percentage%%"
+label-full = " %percentage%%"
+format-full-background = #88000000
+format-full-padding = 3
+format-full-underline = #4b8ab7
+format-charging-background = #88000000
+format-charging-padding = 3
+format-charging-underline = #4b8ab7
+format-discharging-background = #88000000
+format-discharging-padding = 3
+format-discharging-underline = #4b8ab7
+
+[module/clock]
+type = internal/date
+interval = 1.0
+time = %H:%M:%S
+label = %time%
+ format-background = #88000000
+format-padding = 3
+format-underline = #4b8ab7

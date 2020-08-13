@@ -2,9 +2,10 @@
 ;;       Colors        ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 [colors]
-lightbg = #55000000
-darkbg = #55000000
-darkerbg = #161616
+color_darkbg  = #AD1457
+color_lightbg = #EC407A
+shade_darkbg   = #322f3d
+shade_lightbg  = #4b5d67
 fg = #fff
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -12,27 +13,24 @@ fg = #fff
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 [bar/bottom]
 ; Positioning
-height = 32px
+height = 36px
 width = 100%
-padding-right = 4px
-padding-left = 4px
 bottom = yes
 fixed-center = true
 
 ; Styling
-background = transparent
+background = ${colors.shade_darkbg}
 foreground = ${colors.fg}
-separator = " "
 line-size = 2px
+separator = " "
 
 ; Modules
-modules-left = launch
-modules-center = workspaces
+modules-left = launch workspaces
 modules-right = spotify volume battery clock
 
 ; Fonts
 ;;; Main
-font-0 = Segoe UI:size=11:weight=Regular;2
+font-0 = Lato:size=11:weight=Regular;2
 ;;; Font Awesome 5
 font-1 = Font Awesome 5 Free:pixelsize=12;2
 font-2 = Font Awesome 5 Free Solid:pixelsize=12;2
@@ -48,10 +46,11 @@ font-5 = Font Awesome:pixelsize=12;2
 ; Launch (application menu)
 [module/launch]
 type = custom/text
-content = "                    "
-content-background = ${colors.darkbg}
+content = ""
+content-padding = 4
+content-radius-top = 0.5
+content-background = ${colors.shade_lightbg}
 click-left = jgmenu_run &>/dev/null
-content-underline = #4b8ab7
 
 [module/workspaces]
 type = internal/xworkspaces
@@ -64,8 +63,7 @@ label-empty-padding = 2px
 label-active-padding = 2px
 label-urgent-padding = 2px
 label-active-foreground = ${colors.fg}
-label-active-background = ${colors.lightbg}
-label-active-underline = #4b8ab7
+label-active-underline = ${colors.shade_lightbg}
 label-empty-underline = #282828
 label-urgent-underline = #70cbe0
 
@@ -80,8 +78,14 @@ content-background = $(colors.darkbg}
 type = custom/script
 interval = 0.25
 format = <label>
-format-background = #88000000
-exec = python /home/knuxify/.config/polybar/polybar-spotify/spotify_status.py -f '{play_pause}    {artist} - {song}   '
+;format-background = #4b8ab7
+;format-underline = #87556f 
+;$(colors.shade_lightbg}
+;format-padding = 3
+;  5 color_darkbg  = #C2185B
+;  6 color_lightbg = #F06292
+
+exec = python /home/knuxify/.config/polybar/polybar-spotify/spotify_status.py --playcolor="#F06292" --pausecolor="#C2185B"
 click-left = dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 
 [module/volume]
@@ -95,41 +99,37 @@ label-muted-foreground = #ddd
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
-format-volume-background = #88000000
+;format-volume-background = #88000000
 format-volume-padding = 3
-format-volume-underline = #4b8ab7
-format-muted-background = #88000000
+format-volume-underline = ${colors.color_lightbg}
+;format-muted-background = #88000000
 format-muted-padding = 3
-format-muted-underline = #282828
+format-muted-underline = ${colors.color_darkbg}
 
 [module/battery]
 type = internal/battery
 battery = BAT0
 adapter = AC
 format-discharging = <ramp-capacity> <label-discharging>
-ramp-capacity-0 = 
+ramp-capacity-0 = %{u#b25977}%{+u} 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
 label-charging = "  %percentage%%"
-label-discharging = "%percentage%%"
-label-full = " %percentage%%"
-format-full-background = #88000000
+format-charging-underline = ${colors.color_lightbg}
+format-full-underline = ${colors.color_darkbg}
+format-discharging-underline = ${colors.color_darkbg}
+label-discharging = %percentage%%
+label-full =  100% | Unplug charger
 format-full-padding = 3
-format-full-underline = #4b8ab7
-format-charging-background = #88000000
 format-charging-padding = 3
-format-charging-underline = #4b8ab7
-format-discharging-background = #88000000
 format-discharging-padding = 3
-format-discharging-underline = #4b8ab7
 
 [module/clock]
 type = internal/date
 interval = 1.0
 time = %H:%M:%S
-label = %time%
-format-background = #88000000
-format-padding = 3
-format-underline = #4b8ab7
+label = " %time%"
+format-background = ${colors.shade_lightbg}
+format-padding = 2

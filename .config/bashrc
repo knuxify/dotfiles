@@ -4,15 +4,12 @@
 #      rev. B                   #
 #-------------------------------#
 
-PS1="\W \[\e[0m\]> \[$(tput sgr0)\]"
-
-alias grep='grep --colour=auto'
-
 # Source global definitions
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+alias grep='grep --colour=auto'
 alias rb="source ~/.bashrc"
 alias ls="ls -sh --color"
 alias als="ls -shA --color"
@@ -27,6 +24,22 @@ shopt -s checkwinsize; shopt -s expand_aliases; shopt -s histappend
 # Some useful variables
 gh="https://github.com"
 export EDITOR=nano
+
+masochist-mode() {
+	# masochist-mode - set up cm building environment
+	echo -e "\e[1;31mYou promised to not do that anymore.\e[0m Don't let me down."
+	return 1
+	[[ "$1" ]] || {
+		echo "no directory specified!"
+		return 1
+	}
+	echo "Are you sure you want to waste the next ~24 hours? [Y/n] Y"
+	cd ~/lineage/"$1"
+	source ~/lineage/android/venv/bin/activate
+	source build/envsetup.sh
+	export JAVA_HOME=/usr/lib/jvm/java-7-openjdk
+	echo -e "\e[1;31mMASOCHIST MODE\e[0m enabled."
+}
 
 # proj - create a project or cd into one
 # usage: proj [project name or git link]
@@ -44,14 +57,20 @@ proj() {
 		fi
 	fi
 }
-_pcomp() { COMPREPLY=($(ls -fA ~/projects)); }
-complete -F _pcomp proj
+
 # today-i - daily activity logger
-# usage today-i <did stuff>
+# usage: today-i
 today-i() {
 	[[ ! -e ~/today ]] && mkdir ~/today
 	date +%H:%M >> ~/today/$(date +%Y-%m-%d)
-	echo "$*" >> ~/today/$(date +%Y-%m-%d)
+	nano ~/today/$(date +%Y-%m-%d)
+	#echo "$*" >> ~/today/$(date +%Y-%m-%d)
+}
+yesterday-i() {
+	[[ ! -e ~/today ]] && mkdir ~/today
+	date --date="yesterday" +%H:%M >> ~/today/$(date --date="yesterday" +%Y-%m-%d)
+	nano ~/today/$(date --date="yesterday" +%Y-%m-%d)
+	#echo "$*" >> ~/today/$(date --date="yesterday" +%Y-%m-%d)
 }
 
 # Get software. Aliased to shoppe, making it work out of the box on every supported system.
@@ -67,10 +86,14 @@ hack() {
 		hc1|susie|104) ssh ${huser}192.168.1.104;;
 		satellite|mc|lancer|114) ssh ${huser}192.168.1.111;;
 		pi|muffet) ssh ${huser}192.168.1.103;;
+		tunnel|vps) mosh ${huser}user2.polaron.srv.jortage.com;;
+		tunnel-ssh) ssh ${huser}user2.polaron.srv.jortage.com;;
 	esac
 }
 
 alias touchtoggle="xinput --set-prop 'AlpsPS/2 ALPS GlidePoint' 315 $1"
+
+PS1="\W \[\e[0m\]> \[$(tput sgr0)\]"
 
 echo "hi $USER""@$(hostname)! it is currently $(date +%H:%M)"
 echo -e "\e[31m"
@@ -81,56 +104,14 @@ fi
 echo -e "\e[0mdon't forget to run \e[31mtoday-i\e[0m when you're done with a task!\n"
 export PATH="$PATH:/home/knuxfanwin8/.gem/ruby/2.6.0/bin"
 
-masochist-mode() {
-	# masochist-mode - set up cm building environment
-	[[ "$1" ]] || {
-		echo "no directory specified!"
-		return 1
-	}
-	echo "Are you sure you want to waste the next ~24 hours? [Y/n] Y"
-	cd ~/"$1"
-	source ~/lineage/android/venv/bin/activate
-	source build/envsetup.sh
-	export JAVA_HOME=/usr/lib/jvm/java-7-openjdk
-	echo -e "\e[1;31mMASOCHIST MODE\e[0m enabled."
+sng() {
+	sngtmp="$PWD"
+	mkdir -p /tmp/sng
+	cd /tmp/sng
+	youtube-dl -x --audio-format=mp3 --add-metadata --embed-thumbnail "$*"
+	cp * "$sngtmp"
+	cd "$sngtmp"
+	rm -rf /tmp/sng
+	unset sngtmp
 }
 
-alias sng="youtube-dl -x --audio-format=mp3 --add-metadata --embed-thumbnail"
-
-# mainline tools
-
-mainline-tools() {
-	if [[ -z "$mainlinetools" ]]; then
-		[[ -e ~/projects/code ]] && mv ~/projects/code ~/code
-		cd ~/code/linux
-		pmbootstrap chroot -- apk add abootimg android-tools mkbootimg dtbtool
-		export DEVICE="$(pmbootstrap config device)"
-		export WORK="$(pmbootstrap config work)"
-		export TEMP="$WORK/chroot_native/tmp/mainline/"
-		mkdir -p "$TEMP"
-		source ~/code/pmbootstrap/helpers/envkernel.sh
-		export mainlinetools='enabled'
-	elif [[ -z "$*" ]]; then
-		echo "nothing to do!"
-		return 1
-	else
-		if [[ "$1" == "build" ]]; then
-			case $2 in
-				"") defconfig="bcm23550_defconfig";;
-				*) defconfig="$2";;
-			esac
-			make $defconfig || return 1
-			make -j5 || return 1
-			echo "[mainline-tools] Packaging..."
-			read -rep "[mainline-tools] Run pmbootstrap export? [y/N] " tmp
-			if [[ "$tmp" == "y" ]] || [[ "$tmp" == "Y" ]]; then pmbootstrap export || return 1; fi
-			cd ~/code/linux/.output/arch/arm/boot
-			cat zImage dts/bcm23550-baffinlite.dtb > ~/code/linux/.zImage-dtb
-			cp ~/code/linux/.zImage-dtb "$TEMP"/zImage-dtb
-			cp "/tmp/postmarketOS-export/boot.img-$DEVICE" "$TEMP/boot.img"
-			pmbootstrap chroot -- abootimg -u /tmp/mainline/boot.img  -k /tmp/mainline/zImage-dtb
-			rm ~/boot.img
-			cp ~/.local/var/pmbootstrap/chroot_native/tmp/mainline/boot.img ~/boot.img
-		fi
-	fi
-}

@@ -1,0 +1,250 @@
+# DO NOT EDIT: this file was generated with jgmenu-gen and will be replaced the next time jgmenu-gen is ran.
+^tag(all)
+Accessories,^root(Accessories),applications-accessories
+Development,^root(Development),applications-development
+Games,^root(Games),applications-games
+Graphics,^root(Graphics),applications-graphics
+Internet,^root(Internet),applications-internet
+Multimedia,^root(Multimedia),applications-multimedia
+Office,^root(Office),applications-office
+Settings,^root(Settings),preferences-desktop
+System,^root(System),applications-system
+
+# /usr/share/desktop-directories/Utility.directory
+submenu,^tag(Accessories)
+Back,^back(),go-previous
+# /usr/share/applications/org.gnome.FileRoller.desktop
+Archive Manager,file-roller ,org.gnome.ArchiveManager
+# /usr/share/applications/org.gnome.clocks.desktop
+Clocks,gnome-clocks,org.gnome.clocks
+# /usr/share/applications/code-oss.desktop
+Code - OSS,/usr/bin/code-oss --no-sandbox --unity-launch ,com.visualstudio.code.oss
+# /usr/share/applications/exo-file-manager.desktop
+File Manager,exo-open --launch FileManager ,system-file-manager
+# /usr/share/applications/org.gnome.Firmware.desktop
+Firmware,gnome-firmware,org.gnome.Firmware
+# /usr/share/applications/org.gnome.FontManager.desktop
+Font Manager,font-manager ,preferences-desktop-font
+# /usr/share/applications/org.gnome.FontViewer.desktop
+Font Viewer,/usr/libexec/font-manager/font-viewer ,preferences-desktop-font
+# /usr/share/applications/org.gnome.font-viewer.desktop
+Fonts,gnome-font-viewer ,org.gnome.font-viewer
+# /usr/share/applications/org.gnome.Maps.desktop
+Maps,gapplication launch org.gnome.Maps ,org.gnome.Maps
+# /usr/share/applications/xfce4-run.desktop
+# /usr/share/applications/org.gnome.Screenshot.desktop
+Screenshot,gnome-screenshot --interactive,org.gnome.Screenshot
+# /usr/share/applications/exo-terminal-emulator.desktop
+Terminal Emulator,exo-open --launch TerminalEmulator,utilities-terminal
+# /usr/share/applications/vim.desktop
+Vim,^term(vim),gvim
+# /usr/share/applications/winetricks.desktop
+Winetricks,winetricks --gui,winetricks
+# /usr/share/applications/compton.desktop
+compton,compton,compton
+# /usr/share/applications/nitrogen.desktop
+nitrogen,nitrogen,nitrogen
+# /usr/share/applications/picom.desktop
+picom,picom,application-x-executable
+
+# /usr/share/desktop-directories/xfce-development.directory
+submenu,^tag(Development)
+Back,^back(),go-previous
+# /usr/share/applications/cmake-gui.desktop
+CMake,cmake-gui ,CMakeSetup
+# /usr/share/applications/heimdall.desktop
+Heimdall,heimdall-frontend,phone
+# /usr/share/applications/jconsole.desktop
+# /usr/share/applications/assistant.desktop
+# /usr/share/applications/designer.desktop
+# /usr/share/applications/linguist.desktop
+# /usr/share/applications/qdbusviewer.desktop
+
+# /usr/share/desktop-directories/Game.directory
+submenu,^tag(Games)
+Back,^back(),go-previous
+# /usr/share/applications/desmume.desktop
+DeSmuME (Gtk),desmume,DeSmuME
+# /usr/share/applications/dolphin-emu.desktop
+Dolphin Emulator,env QT_QPA_PLATFORM=xcb dolphin-emu,dolphin-emu
+# /usr/share/applications/minecraft-launcher.desktop
+Minecraft Launcher,cd /opt/minecraft-launcher/;/opt/minecraft-launcher/minecraft-launcher,minecraft-launcher
+# /usr/share/applications/opensurge.desktop
+Open Surge,opensurge,opensurge
+
+# /usr/share/desktop-directories/xfce-graphics.directory
+submenu,^tag(Graphics)
+Back,^back(),go-previous
+# /usr/share/applications/simple-scan.desktop
+Document Scanner,simple-scan,org.gnome.SimpleScan
+# /usr/share/applications/gimp.desktop
+GNU Image Manipulation Program,gimp-2.10 ,gimp
+# /usr/share/applications/gpick.desktop
+Gpick,gpick,gpick
+# /usr/share/applications/org.kde.gwenview.desktop
+Gwenview,gwenview ,gwenview
+# /usr/share/applications/org.inkscape.Inkscape.desktop
+Inkscape,inkscape ,org.inkscape.Inkscape
+# /usr/share/applications/org.kde.krita.desktop
+Krita,krita ,krita
+# /usr/share/applications/org.kde.okular.desktop
+Okular,okular ,okular
+# /usr/share/applications/org.kde.skanlite.desktop
+Skanlite,skanlite -qwindowtitle %i,scanner
+
+# /usr/share/desktop-directories/Network.directory
+submenu,^tag(Internet)
+Back,^back(),go-previous
+# /usr/share/applications/bssh.desktop
+Avahi SSH Server Browser,/usr/bin/bssh,network-wired
+# /usr/share/applications/bvnc.desktop
+Avahi VNC Server Browser,/usr/bin/bvnc,network-wired
+# /usr/share/applications/discord.desktop
+Discord,cd /usr/bin;/usr/bin/discord,discord
+# /usr/share/applications/io.element.Element.desktop
+Element,/usr/bin/element-desktop ,io.element.Element
+# /usr/share/applications/filezilla.desktop
+FileZilla,filezilla,filezilla
+# /usr/share/applications/firefox.desktop
+Firefox,/usr/lib/firefox/firefox ,firefox
+# /usr/share/applications/io.github.Hexchat.desktop
+HexChat,hexchat --existing ,hexchat
+# /usr/share/applications/exo-mail-reader.desktop
+Mail Reader,exo-open --launch MailReader ,emblem-mail
+# /usr/share/applications/teams.desktop
+Microsoft Teams - Preview,/usr/bin/teams ,teams
+# /usr/share/applications/pidgin.desktop
+Pidgin Internet Messenger,pidgin,pidgin
+# /usr/share/applications/putty.desktop
+PuTTY,putty ,putty
+# /usr/share/applications/soulseekqt.desktop
+SoulSeekQT,soulseekqt,soulseek
+# /usr/share/applications/exo-web-browser.desktop
+Web Browser,exo-open --launch WebBrowser ,web-browser
+# /usr/share/applications/Zoom.desktop
+Zoom,/usr/bin/zoom ,Zoom
+# /usr/share/applications/org.qbittorrent.qBittorrent.desktop
+qBittorrent,qbittorrent ,qbittorrent
+
+# /usr/share/desktop-directories/xfce-multimedia.directory
+submenu,^tag(Multimedia)
+Back,^back(),go-previous
+# /usr/share/applications/audacious.desktop
+Audacious,audacious ,audacious
+# /usr/share/applications/audacity.desktop
+Audacity,env UBUNTU_MENUPROXY=0 audacity ,audacity
+# /usr/share/applications/org.kde.k3b.desktop
+K3b,k3b ,k3b
+# /usr/share/applications/org.kde.kdenlive.desktop
+Kdenlive,kdenlive ,kdenlive
+# /usr/share/applications/org.musicbrainz.Picard.desktop
+MusicBrainz Picard,picard ,org.musicbrainz.Picard
+# /usr/share/applications/com.obsproject.Studio.desktop
+OBS Studio,obs,com.obsproject.Studio
+# /usr/share/applications/openmpt.desktop
+OpenMPT,openmpt,openmpt
+# /usr/share/applications/com.github.pulseaudio-equalizer-ladspa.Equalizer.desktop
+PulseAudio Equalizer,pulseaudio-equalizer-gtk,multimedia-volume-control
+# /usr/share/applications/paman.desktop
+PulseAudio Manager,paman,audio-card
+# /usr/share/applications/pavucontrol.desktop
+PulseAudio Volume Control,pavucontrol,multimedia-volume-control
+# /usr/share/applications/qv4l2.desktop
+# /usr/share/applications/qvidcap.desktop
+# /usr/share/applications/spotify.desktop
+Spotify,spotify ,spotify-client
+# /usr/share/applications/mpv.desktop
+mpv Media Player,mpv --player-operation-mode=pseudo-gui -- ,mpv
+
+# /usr/share/desktop-directories/Office.directory
+submenu,^tag(Office)
+Back,^back(),go-previous
+# /usr/share/applications/libreoffice-startcenter.desktop
+LibreOffice,libreoffice ,libreoffice-startcenter
+# /usr/share/applications/libreoffice-base.desktop
+LibreOffice Base,libreoffice --base ,libreoffice-base
+# /usr/share/applications/libreoffice-calc.desktop
+LibreOffice Calc,libreoffice --calc ,libreoffice-calc
+# /usr/share/applications/libreoffice-draw.desktop
+LibreOffice Draw,libreoffice --draw ,libreoffice-draw
+# /usr/share/applications/libreoffice-impress.desktop
+LibreOffice Impress,libreoffice --impress ,libreoffice-impress
+# /usr/share/applications/libreoffice-math.desktop
+LibreOffice Math,libreoffice --math ,libreoffice-math
+# /usr/share/applications/libreoffice-writer.desktop
+LibreOffice Writer,libreoffice --writer ,libreoffice-writer
+
+# /usr/share/desktop-directories/xfce-settings.directory
+submenu,^tag(Settings)
+Back,^back(),go-previous
+# /usr/share/applications/nm-connection-editor.desktop
+Advanced Network Configuration,nm-connection-editor,preferences-system-network
+# /usr/share/applications/blueman-adapters.desktop
+Bluetooth Adapters,blueman-adapters,blueman-device
+# /usr/share/applications/blueman-manager.desktop
+Bluetooth Manager,blueman-manager,blueman
+# /usr/share/applications/xfce-backdrop-settings.desktop
+# /usr/share/applications/thunar-settings.desktop
+File Manager Settings,thunar-settings,system-file-manager
+# /usr/share/applications/lxrandr.desktop
+Monitor Settings,lxrandr,video-display
+# /usr/share/applications/xfce4-notifyd-config.desktop
+Notifications,xfce4-notifyd-config,xfce4-notifyd
+# /usr/share/applications/policytool.desktop
+# /usr/share/applications/obconf.desktop
+Openbox Configuration Manager,obconf ,obconf
+# /usr/share/applications/panel-preferences.desktop
+Panel,xfce4-panel --preferences,xfce4-panel
+# /usr/share/applications/xfce4-power-manager-settings.desktop
+Power Manager,xfce4-power-manager-settings,xfce4-power-manager-settings
+# /usr/share/applications/exo-preferred-applications.desktop
+Preferred Applications,exo-preferred-applications,preferences-desktop-default-applications
+# /usr/share/applications/gksu-properties.desktop
+Privilege granting,gksu-properties,gksu.png
+# /usr/share/applications/thunar-volman-settings.desktop
+Removable Drives and Media,thunar-volman-settings,drive-removable-media
+# /usr/share/applications/tint2conf.desktop
+Tint2 Settings,tint2conf,tint2conf
+# /usr/share/applications/xfce-wm-settings.desktop
+Window Manager,xfwm4-settings,xfwm4
+# /usr/share/applications/xfce-wmtweaks-settings.desktop
+Window Manager Tweaks,xfwm4-tweaks-settings,wmtweaks
+# /usr/share/applications/xfce-workspaces-settings.desktop
+Workspaces,xfwm4-workspace-settings,xfce4-workspaces
+# /usr/share/applications/xfce4-terminal-settings.desktop
+Xfce Terminal,xfce4-terminal --preferences,utilities-terminal
+
+# /usr/share/desktop-directories/xfce-system.directory
+submenu,^tag(System)
+Back,^back(),go-previous
+# /usr/share/applications/avahi-discover.desktop
+Avahi Zeroconf Browser,/usr/bin/avahi-discover,network-wired
+# /usr/share/applications/org.gnome.Boxes.desktop
+Boxes,gnome-boxes ,org.gnome.Boxes
+# /usr/share/applications/thunar-bulk-rename.desktop
+Bulk Rename,/usr/lib/Thunar/ThunarBulkRename ,Thunar
+# /usr/share/applications/gparted.desktop
+GParted,/usr/bin/gparted ,gparted
+# /usr/share/applications/lstopo.desktop
+Hardware Locality lstopo,lstopo,application-x-executable
+# /usr/share/applications/htop.desktop
+Htop,^term(htop),htop
+# /usr/share/applications/org.gnome.Logs.desktop
+Logs,gnome-logs,org.gnome.Logs
+# /usr/share/applications/cups.desktop
+Manage Printing,/usr/bin/xdg-open http://localhost:631/,cups
+# /usr/share/applications/org.freedesktop.MalcontentControl.desktop
+Parental Controls,malcontent-control,org.freedesktop.MalcontentControl
+# /usr/share/applications/psensor.desktop
+Psensor,psensor,psensor
+# /usr/share/applications/thunar.desktop
+Thunar File Manager,thunar ,Thunar
+# /usr/share/applications/tint2.desktop
+Tint2,tint2,tint2
+# /usr/share/applications/woeusbgui.desktop
+WoeUSB,woeusbgui,woeusbgui-icon
+# /usr/share/applications/xfce4-terminal.desktop
+Xfce Terminal,xfce4-terminal,utilities-terminal
+# /usr/share/applications/jgmenu.desktop
+jgmenu,jgmenu_run,jgmenu
+^tag(workaround)

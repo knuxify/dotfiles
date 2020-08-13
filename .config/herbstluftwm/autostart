@@ -3,6 +3,8 @@
 # knuxify's herbst config
 # version 2
 
+#PATH="$HOME/.bin:$PATH"
+
 hc() {
     herbstclient "$@"
 }
@@ -49,6 +51,8 @@ hc keybind $Mod-Control-Right   resize right +$resizestep
 
 hc keybind Shift-Print spawn ~/.bin/screengun /home/knuxify/pictures/screenshots
 hc keybind Print spawn ~/.bin/screengun /home/knuxify/pictures/screenshots fullscreen
+
+hc keybind $Mod-Shift-p spawn /home/knuxify/.bin/reloadbar
 
 # obligarory music control bindings
 hc keybind XF86AudioRaiseVolume spawn pactl -- set-sink-volume @DEFAULT_SINK@ +5%
@@ -102,14 +106,9 @@ hc mousebind $Mod-Button3 resize
 hc attr theme.tiling.reset 1
 hc attr theme.floating.reset 1
 
-# padding
-hc pad 0 10 10 40 10
-hc set window_gap 2
-#hc set frame_gap 1
-
-hc attr theme.border_width 2
-hc attr theme.floating.border_width 2
-hc attr theme.floating.outer_width 2
+hc attr theme.border_width 4
+hc attr theme.floating.border_width 4
+hc attr theme.floating.outer_width 4
 
 hc set frame_padding 0
 hc set smart_window_surroundings 0
@@ -122,8 +121,8 @@ hc set frame_bg_transparent 1
 hc set frame_transparent_width 0
 #hc set frame_gap 0
 
-bg1="#242424"
-bg2="#70cbe0"
+bg1="#322f3d"
+bg2="#4b5d67"
 hc attr theme.active.color "$bg2"
 hc attr theme.normal.color "$bg1"
 hc attr theme.urgent.color orange
@@ -153,9 +152,12 @@ hc unlock
 # Autostart
 hc spawn killall polybar
 hc spawn killall picom
+hc spawn killall batterymonitor
+hc spawn /home/knuxify/.bin/batterymonitor
 hc spawn polybar bottom
 hc spawn picom
 hc spawn nitrogen --restore
+hc spawn jgmenu-gen
 setxkbmap pl
 
 # Monitor setup
@@ -172,3 +174,7 @@ else
 fi
 
 hc detect_monitors
+
+# padding
+hc pad 0 10 10 46 10
+hc set window_gap 2

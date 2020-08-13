@@ -31,9 +31,9 @@ BackgroundDarkness=1.000000
 ScrollingLines=10000
 ScrollingUnlimited=TRUE
 ColorForeground=#c5c8c6
-ColorBackground=#1d1f21
+ColorBackground=#1ccc23332666
 ColorCursor=x
-ColorPalette=#1d1f21;#cc6666;#b5bd68;#f0c674;#81a2be;#b294bb;#8abeb7;#c5c8c6;#969896;#cc6666;#b5bd68;#f0c674;#81a2be;#b294bb;#8abeb7;#ffffff
-ColorBoldIsBright=FALSE
+ColorPalette=rgb(29,31,33);rgb(230,98,93);rgb(155,214,103);rgb(255,179,0);rgb(30,136,229);rgb(225,49,126);rgb(0,172,193);rgb(236,239,241);rgb(150,152,150);rgb(239,83,80);rgb(156,204,101);rgb(255,213,79);rgb(100,181,246);rgb(236,64,122);rgb(77,208,225);rgb(207,216,220)
 ScrollingOnOutput=FALSE
+ColorBoldIsBright=FALSE
 

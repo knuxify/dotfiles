@@ -1,0 +1,33 @@
+#!/bin/sh
+ac='AC'
+battery='BAT0'
+prev_battery_capacity=0
+prev_charging_status=$(cat /sys/class/power_supply/$ac/online)
+while true; do
+	battery_capacity=$(cat /sys/class/power_supply/$battery/capacity)
+	charging_status=$(cat /sys/class/power_supply/$ac/online)
+	if   [ $battery_capacity -le 20 ];  then icon='battery-020'
+	elif [ $battery_capacity -le 40 ];  then icon='battery-040'
+	elif [ $battery_capacity -le 60 ];  then icon='battery-060'
+	elif [ $battery_capacity -le 80 ];  then icon='battery-080'
+	elif [ $battery_capacity -le 100 ]; then icon='battery-100'
+	fi
+	if [ $battery_capacity -ne $prev_battery_capacity ]; then
+		if [ $battery_capacity -le 20 ] && [ $charging_status -eq 0 ]; then
+			notify-send -i $icon "Low battery ($battery_capacity%)!" "Please connect the charger."
+		fi
+		if [ $battery_capacity -eq 100 ] && [ $charging_status -eq 1 ]; then
+			notify-send -i $icon "Battery full (100%)!" "Please disconnect the charger."
+		fi
+		prev_battery_capacity=$battery_capacity
+	fi
+	if [ $charging_status -ne $prev_charging_status ]; then
+		if [ $charging_status -eq 1 ]; then
+			notify-send -i $icon-charging "Charger connected ($battery_capacity%)."
+		else
+			notify-send -i $icon "Charger disconnected ($battery_capacity%)."
+		fi
+		prev_charging_status=$charging_status
+	fi
+	sleep 1s
+done

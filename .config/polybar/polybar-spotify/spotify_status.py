@@ -37,7 +37,18 @@ parser.add_argument(
     metavar='the index of the font to use to display the playpause indicator',
     dest='play_pause_font'
 )
-
+parser.add_argument(
+    '--playcolor',
+    type=str,
+    metavar='play color',
+    dest='play_color'
+)
+parser.add_argument(
+    '--pausecolor',
+    type=str,
+    metavar='pause color',
+    dest='pause_color'
+)
 
 args = parser.parse_args()
 
@@ -49,9 +60,9 @@ def fix_string(string):
         return string.encode('utf-8')
 
 # Default parameters
-output = fix_string(u'{play_pause} {artist}: {song}')
+output = fix_string(u'{play_pause} {artist} - {song}   {extra}')
 trunclen = 25
-play_pause = fix_string(u'%{u#4b8ab7}%{+u},%{u#282828}%{+u}') # first character is play, second is paused
+play_pause = fix_string(u'%{u#F06292}%{+u}   ,%{u#C2185B}%{+u}   ') # first character is play, second is paused
 
 label_with_font = '%{{T{font}}}{label}%{{T-}}'
 font = args.font
@@ -114,7 +125,7 @@ try:
             song = label_with_font.format(font=font, label=song)
             album = label_with_font.format(font=font, label=album)
 
-        print(output.format(artist=artist, song=song, play_pause=play_pause, album=album))
+        print(output.format(artist=artist, song=song, play_pause=play_pause, album=album, extra="%{u-}"))
 
 except Exception as e:
     if isinstance(e, dbus.exceptions.DBusException):
