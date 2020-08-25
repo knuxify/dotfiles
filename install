@@ -17,16 +17,16 @@ for f in $tocopy; do
 	case $f in
 		        bashrc) cp .config/bashrc ~/.bashrc;;
 		        nanorc) cp .config/nanorc ~/.nanorc;;
-		      neofetch) cp -r .config/neofetch ~/.config;;
-		           gtk) cp -r .config/gtk-3.0 ~/.config; cp .config/gtkrc-2.0 ~/.gtkrc-2.0; [[ ! -e /usr/share/fonts ]] && sudo mkdir -p /usr/share/fonts; sudo cp -r .fonts/* /usr/share/fonts; sudo cp -r .themes/* /usr/share/themes;;
-		  herbstluftwm) cp -r .config/herbstluftwm ~/.config;;
-		       polybar) cp -r .config/polybar ~/.config;;
+		      neofetch) cp -rf .config/neofetch ~/.config;;
+		           gtk) cp -rf .config/gtk-3.0 ~/.config; cp .config/gtkrc-2.0 ~/.gtkrc-2.0; [[ ! -e /usr/share/fonts ]] && sudo mkdir -p /usr/share/fonts; sudo cp -r .fonts/* /usr/share/fonts; sudo cp -r .themes/* /usr/share/themes;;
+		  herbstluftwm) cp -rf .config/herbstluftwm ~/.config;;
+		       polybar) cp -rf .config/polybar ~/.config;;
 		xfce4-terminal) [[ ! -e ~/.config/xfce4 ]] && mkdir ~/.config/xfce4; cp -r .config/xfce4/terminal ~/.config/xfce4/;;
-		          rofi) cp -r .config/rofi ~/.config;;
-		   backgrounds) cp -r .backgrounds ~/;;
-		        jgmenu) cp -r .config/jgmenu ~/config;;
-			     picom) cp -r .config/picom ~/config; [[ -e ~/.config/compton.conf ]] && mv ~/.config/compton.conf{,.old};;
-			       bin) [[ ! -e ~/.bin ]] && mkdir ~/.bin; cp -r .bin/* ~/.bin/;;
+		          rofi) cp -rf .config/rofi ~/.config;;
+		   backgrounds) cp -rf .backgrounds ~/;;
+		        jgmenu) cp -rf .config/jgmenu ~/config;;
+			     picom) cp -rf .config/picom ~/config; [[ -e ~/.config/compton.conf ]] && mv ~/.config/compton.conf{,.old};;
+			       bin) [[ ! -e ~/.bin ]] && mkdir ~/.bin; cp -rf .bin/* ~/.bin/;;
 	esac
 done
 
