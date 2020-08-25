@@ -31,6 +31,8 @@ Font Viewer,/usr/libexec/font-manager/font-viewer ,preferences-desktop-font
 Fonts,gnome-font-viewer ,org.gnome.font-viewer
 # /usr/share/applications/org.gnome.Maps.desktop
 Maps,gapplication launch org.gnome.Maps ,org.gnome.Maps
+# /usr/share/applications/com.nextcloud.desktopclient.nextcloud.desktop
+Nextcloud desktop sync client ,nextcloud,Nextcloud
 # /usr/share/applications/xfce4-run.desktop
 # /usr/share/applications/org.gnome.Screenshot.desktop
 Screenshot,gnome-screenshot --interactive,org.gnome.Screenshot
@@ -89,12 +91,16 @@ Inkscape,inkscape ,org.inkscape.Inkscape
 Krita,krita ,krita
 # /usr/share/applications/org.kde.okular.desktop
 Okular,okular ,okular
+# /usr/share/applications/com.uploadedlobster.peek.desktop
+Peek,peek,com.uploadedlobster.peek
 # /usr/share/applications/org.kde.skanlite.desktop
 Skanlite,skanlite -qwindowtitle %i,scanner
 
 # /usr/share/desktop-directories/Network.directory
 submenu,^tag(Internet)
 Back,^back(),go-previous
+# /usr/share/applications/anydesk.desktop
+AnyDesk,env GTK2_RC_FILES=/usr/share/themes/Adwaita/gtk-2.0/gtkrc /usr/bin/anydesk ,anydesk
 # /usr/share/applications/bssh.desktop
 Avahi SSH Server Browser,/usr/bin/bssh,network-wired
 # /usr/share/applications/bvnc.desktop
