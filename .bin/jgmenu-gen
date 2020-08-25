@@ -1,0 +1,8 @@
+#!/bin/sh
+export JGMENU_SINGLE_WINDOW=1
+unset JGMENU_NO_DIRS
+echo -e '# DO NOT EDIT: this file was generated with jgmenu-gen and will be replaced the next time jgmenu-gen is ran.\n^tag(all)' > /tmp/append.csv
+HOME=/dev/null /usr/lib/jgmenu/jgmenu-pmenu.py >> /tmp/append.csv
+cat /tmp/append.csv | grep -v "xfce4-about" | grep -v "xfce4-appfinder" | grep -v "xfdesktop" | grep -v "openjdk" | grep -v "electron" | grep -v "Qt " | grep -iv "avachi" > /tmp/append-new.csv
+echo '^tag(workaround)' >> /tmp/append-new.csv
+mv /tmp/append-new.csv ~/.config/jgmenu/append.csv
