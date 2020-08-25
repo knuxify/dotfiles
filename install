@@ -24,8 +24,8 @@ for f in $tocopy; do
 		xfce4-terminal) [[ ! -e ~/.config/xfce4 ]] && mkdir ~/.config/xfce4; cp -r .config/xfce4/terminal ~/.config/xfce4/;;
 		          rofi) cp -rf .config/rofi ~/.config;;
 		   backgrounds) cp -rf .backgrounds ~/;;
-		        jgmenu) cp -rf .config/jgmenu ~/config;;
-			     picom) cp -rf .config/picom ~/config; [[ -e ~/.config/compton.conf ]] && mv ~/.config/compton.conf{,.old};;
+		        jgmenu) cp -rf .config/jgmenu ~/.config;;
+			     picom) cp -rf .config/picom ~/.config; [[ -e ~/.config/compton.conf ]] && mv ~/.config/compton.conf{,.old};;
 			       bin) [[ ! -e ~/.bin ]] && mkdir ~/.bin; cp -rf .bin/* ~/.bin/;;
 	esac
 done
