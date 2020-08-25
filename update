@@ -22,10 +22,10 @@ for f in $tocopy; do
           herbstluftwm) cp -rf ~/.config/herbstluftwm .config; grep -v "xflux" .config/herbstluftwm/autostart > .config/herbstluftwm/autostart-tmp; mv .config/herbstluftwm/autostart-tmp .config/herbstluftwm/autostart;;
                polybar) cp -rf ~/.config/polybar .config;;
 		xfce4-terminal) [[ ! -e .config/xfce4 ]] && mkdir .config/xfce4; cp -r ~/.config/xfce4/terminal .config/xfce4/;;
-		          rofi) cp -r ~/.config/rofi .config;;
-		   backgrounds) cp -r ~/.backgrounds .;;
-		        jgmenu) cp -r ~/.config/jgmenu .config;;
-		         picom) cp -r ~/.config/picom .config;;
+		          rofi) cp -rf ~/.config/rofi .config;;
+		   backgrounds) cp -rf ~/.backgrounds .;;
+		        jgmenu) cp -rf ~/.config/jgmenu .config;;
+		         picom) cp -rf ~/.config/picom .config;;
     esac
 done
 
