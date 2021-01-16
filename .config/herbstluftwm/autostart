@@ -158,6 +158,7 @@ hc spawn polybar bottom
 hc spawn picom
 hc spawn nitrogen --restore
 hc spawn jgmenu-gen
+systemctl start --user dunst
 setxkbmap pl
 
 # Monitor setup

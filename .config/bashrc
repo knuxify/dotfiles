@@ -1,6 +1,6 @@
 #!/bin/bash
 #-------------------------------#
-#      knuxfanwin8's bashrc     #
+#      knuxify's bashrc         #
 #      rev. B                   #
 #-------------------------------#
 
@@ -15,7 +15,7 @@ alias ls="ls -sh --color"
 alias als="ls -shA --color"
 
 # Add local bin folder to path.
-export PATH=$PATH:~/.bin
+export PATH=$PATH:~/.bin:~/.local/bin
 
 xhost +local:root > /dev/null 2>&1
 complete -cf sudo
@@ -28,7 +28,7 @@ export EDITOR=nano
 masochist-mode() {
 	# masochist-mode - set up cm building environment
 	echo -e "\e[1;31mYou promised to not do that anymore.\e[0m Don't let me down."
-	return 1
+	#return 1
 	[[ "$1" ]] || {
 		echo "no directory specified!"
 		return 1
@@ -86,8 +86,8 @@ hack() {
 		hc1|susie|104) ssh ${huser}192.168.1.104;;
 		satellite|mc|lancer|114) ssh ${huser}192.168.1.111;;
 		pi|muffet) ssh ${huser}192.168.1.103;;
-		tunnel|vps) mosh ${huser}user2.polaron.srv.jortage.com;;
-		tunnel-ssh) ssh ${huser}user2.polaron.srv.jortage.com;;
+		#tunnel|vps) mosh ${huser}user2.polaron.srv.jortage.com;;
+		tunnel) ssh -p 420 ${huser}user2.polaron.srv.jortage.com;;
 	esac
 }
 
@@ -102,7 +102,7 @@ if [[ -e ~/TODO ]] && [[ -s ~/TODO ]]; then
 	while IFS="" read -r line || [[ -n "$line" ]]; do [[ "$line" != "#"* ]] && echo "$line"; done < ~/TODO
 fi
 echo -e "\e[0mdon't forget to run \e[31mtoday-i\e[0m when you're done with a task!\n"
-export PATH="$PATH:/home/knuxfanwin8/.gem/ruby/2.6.0/bin"
+export PATH="$PATH:/home/knuxify/.gem/ruby/2.7.0/bin"
 
 sng() {
 	sngtmp="$PWD"
@@ -115,3 +115,22 @@ sng() {
 	unset sngtmp
 }
 
+brightness_up() {
+	change=5
+	[[ $1 ]] && change=$1
+	brightness=$(cat /sys/class/backlight/intel_backlight/brightness)
+	let $brightness+$change
+	echo "$brightness" > /sys/class/backlight/intel_backlight/brightness
+}
+
+brightness_down() {
+	change=5
+	[[ $1 ]] && change=$1
+	brightness=$(cat /sys/class/backlight/intel_backlight/brightness)
+	let $brightness-$change
+	echo "$brightness" > /sys/class/backlight/intel_backlight/brightness
+}
+
+brighness_set() {
+	echo "$1" > /sys/class/backlight/intel_backlight/brightness
+}
