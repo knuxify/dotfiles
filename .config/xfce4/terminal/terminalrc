@@ -30,10 +30,9 @@ FontName=Terminus (TTF) Medium 12
 BackgroundDarkness=1.000000
 ScrollingLines=10000
 ScrollingUnlimited=TRUE
-ColorForeground=#c5c8c6
-ColorBackground=#1ccc23332666
-ColorCursor=x
-ColorPalette=rgb(29,31,33);rgb(230,98,93);rgb(155,214,103);rgb(255,179,0);rgb(30,136,229);rgb(225,49,126);rgb(0,172,193);rgb(236,239,241);rgb(150,152,150);rgb(239,83,80);rgb(156,204,101);rgb(255,213,79);rgb(100,181,246);rgb(236,64,122);rgb(77,208,225);rgb(207,216,220)
+ColorForeground=#f776ea7fc945
+ColorBackground=#242424242424
+ColorPalette=#282828;#cc241d;#98971a;#d79921;#458588;#b16286;#689d6a;#a89984;#928374;#fb4934;#b8bb26;#fabd2f;#83a598;#d3869b;#8ec07c;#ebdbb2
 ScrollingOnOutput=FALSE
-ColorBoldIsBright=FALSE
+TabActivityColor=#bf4040
 

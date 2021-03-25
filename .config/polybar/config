@@ -2,11 +2,11 @@
 ;;       Colors        ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 [colors]
-color_darkbg  = #AD1457
-color_lightbg = #EC407A
-shade_darkbg   = #322f3d
-shade_lightbg  = #4b5d67
-fg = #fff
+color_darkbg  = #DD282828
+color_lightbg = #445E44
+shade_darkbg  = #DD282828
+shade_lightbg = #445E44
+fg = #D2C4A1
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;    Bar settings     ;;
@@ -14,9 +14,14 @@ fg = #fff
 [bar/bottom]
 ; Positioning
 height = 36px
-width = 100%
-bottom = yes
+width = 90%
+top = yes
 fixed-center = true
+offset-x = 5%
+;border-bottom-size = 2px
+;border-bottom-color = ${colors.color_lightbg}
+;line-size = 3
+;line-color = #f00
 
 ; Styling
 background = ${colors.shade_darkbg}
@@ -26,15 +31,15 @@ separator = " "
 
 ; Modules
 modules-left = launch workspaces
-modules-right = spotify volume battery clock
+modules-right = spotifytitle prevtrack spotifybutton nexttrack volume battery clock
 
 ; Fonts
 ;;; Main
-font-0 = Lato:size=11:weight=Regular;2
+font-0 = Sylfaen:size=12:antialias=false;weight=Regular;2
 ;;; Font Awesome 5
-font-1 = Font Awesome 5 Free:pixelsize=12;2
-font-2 = Font Awesome 5 Free Solid:pixelsize=12;2
-font-3 = Font Awesome 5 Brands:pixelsize=12;2
+font-1 = Font Awesome 5 Free:pixelsize=11:antialias=false;2
+font-2 = Font Awesome 5 Free Solid:pixelsize=11:antialias=false;2
+font-3 = Font Awesome 5 Brands:pixelsize=11:antialias=false;2
 ;;; Font Awesome 4, some glyphs missing
 font-4 = FontAwesome:pixelsize=12;2
 font-5 = Font Awesome:pixelsize=12;2
@@ -46,7 +51,7 @@ font-5 = Font Awesome:pixelsize=12;2
 ; Launch (application menu)
 [module/launch]
 type = custom/text
-content = ""
+content = " "
 content-padding = 4
 content-radius-top = 0.5
 content-background = ${colors.shade_lightbg}
@@ -56,6 +61,8 @@ click-left = jgmenu_run &>/dev/null
 type = internal/xworkspaces
 pin-workspaces = true
 enable-scroll = false
+label-active-border-size = 2px
+label-active-border-color = ${colors.shade_lightbg}
 label-empty = "%icon%"
 label-occupied = "%icon%"
 label-active = "%icon%"
@@ -67,29 +74,47 @@ label-urgent-padding = 2px
 label-occupied-padding = 2px
 label-active-foreground = ${colors.fg}
 label-active-underline = ${colors.shade_lightbg}
-label-empty-underline = #282828
+;label-empty-underline = ${colors.shade_darkbg}
+;label-occupied-underline = ${colors.shade_darkbg}
 label-urgent-underline = #70cbe0
 
-icon-0 = 1;
-icon-1 = 2;
-icon-2 = 3;
-icon-3 = 4;
+icon-0 = 1;l
+icon-1 = 2;w
+icon-2 = 3;g
+icon-3 = 4;m
 
-content-background = $(colors.darkbg}
-
-[module/spotify]
+[module/spotifytitle]
 type = custom/script
 interval = 0.25
 format = <label>
-;format-background = #4b8ab7
-;format-underline = #87556f 
-;$(colors.shade_lightbg}
-;format-padding = 3
-;  5 color_darkbg  = #C2185B
-;  6 color_lightbg = #F06292
+format-underline = ${colors.shade_lightbg}
 
-exec = python /home/knuxify/.config/polybar/polybar-spotify/spotify_status.py --playcolor="#F06292" --pausecolor="#C2185B"
+exec = ~/.bin/playerctl-meta
+
+[module/spotifybutton]
+type = custom/script
+interval = 0.25
+format = <label>
+format-underline = ${colors.lightbg}
+
+exec = python /home/knuxify/.config/polybar/polybar-spotify/spotify_status.py
 click-left = dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+
+[module/prevtrack]
+type = custom/text
+content = ""
+content-padding = 2
+content-radius-top = 0.5
+content-underline = ${colors.shade_lightbg}
+click-left = dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+
+[module/nexttrack]
+type = custom/text
+content = ""
+content-padding = 2
+content-radius-top = 0.5
+content-underline = ${colors.shade_lightbg}
+click-left = dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
 
 [module/volume]
 type = internal/pulseaudio
@@ -102,10 +127,10 @@ label-muted-foreground = #ddd
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
-;format-volume-background = #88000000
+;format-volume-underline = #88000000
 format-volume-padding = 3
 format-volume-underline = ${colors.color_lightbg}
-;format-muted-background = #88000000
+;format-muted-underline = #88000000
 format-muted-padding = 3
 format-muted-underline = ${colors.color_darkbg}
 
@@ -121,8 +146,8 @@ ramp-capacity-3 = 
 ramp-capacity-4 = 
 label-charging = "  %percentage%%"
 format-charging-underline = ${colors.color_lightbg}
-format-full-underline = ${colors.color_darkbg}
-format-discharging-underline = ${colors.color_darkbg}
+;format-full-underline = ${colors.color_darkbg}
+;format-discharging-underline = ${colors.color_darkbg}
 label-discharging = %percentage%%
 label-full =  100% | Unplug charger
 format-full-padding = 3
@@ -134,5 +159,5 @@ type = internal/date
 interval = 1.0
 time = %H:%M:%S
 label = " %time%"
-format-background = ${colors.shade_lightbg}
+format-underline = ${colors.shade_lightbg}
 format-padding = 2

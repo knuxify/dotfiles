@@ -1,0 +1,18 @@
+configuration {
+	font: "Sylfaen 14";
+	modi: "window,drun";
+	combi-modi: "window,drun";
+	icon-theme: "Papirus Dark";
+	show-icons: true;
+	width: 40;
+	lines: 2;
+	click-to-exit: false;
+}
+window {
+	padding: 10px;
+	anchor: north;
+	location: north;
+	transparency: "screenshot";
+	background-color: rgba(40,40,40,0.3);
+}
+@import "/usr/share/rofi/themes/gruvbox-dark-soft.rasi"

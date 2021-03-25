@@ -7,7 +7,8 @@ Graphics,^root(Graphics),applications-graphics
 Internet,^root(Internet),applications-internet
 Multimedia,^root(Multimedia),applications-multimedia
 Office,^root(Office),applications-office
-Settings,^root(Settings),preferences-desktop
+Other,^root(Other),applications-other
+Accessibility,^root(Accessibility),preferences-desktop-accessibility
 System,^root(System),applications-system
 
 # /usr/share/desktop-directories/Utility.directory
@@ -19,29 +20,39 @@ Archive Manager,file-roller ,org.gnome.ArchiveManager
 Clocks,gnome-clocks,org.gnome.clocks
 # /usr/share/applications/code-oss.desktop
 Code - OSS,/usr/bin/code-oss --no-sandbox --unity-launch ,com.visualstudio.code.oss
-# /usr/share/applications/exo-file-manager.desktop
-File Manager,exo-open --launch FileManager ,system-file-manager
+# /usr/share/applications/org.kde.plasma.emojier.desktop
+Emoji Selector,ibus-ui-emojier-plasma,preferences-desktop-emoticons
+# /usr/share/applications/xfce4-file-manager.desktop
+File Manager,exo-open --launch FileManager ,org.xfce.filemanager
 # /usr/share/applications/org.gnome.Firmware.desktop
 Firmware,gnome-firmware,org.gnome.Firmware
 # /usr/share/applications/org.gnome.FontManager.desktop
-Font Manager,font-manager ,preferences-desktop-font
+Font Manager,font-manager ,org.gnome.FontManager
 # /usr/share/applications/org.gnome.FontViewer.desktop
-Font Viewer,/usr/libexec/font-manager/font-viewer ,preferences-desktop-font
+Font Viewer,/usr/lib/font-manager/font-viewer ,org.gnome.FontViewer
 # /usr/share/applications/org.gnome.font-viewer.desktop
 Fonts,gnome-font-viewer ,org.gnome.font-viewer
+# /usr/share/applications/org.kde.klipper.desktop
+Klipper,klipper,klipper
 # /usr/share/applications/org.gnome.Maps.desktop
 Maps,gapplication launch org.gnome.Maps ,org.gnome.Maps
+# /usr/share/applications/micro.desktop
+Micro,^term(micro),micro
 # /usr/share/applications/com.nextcloud.desktopclient.nextcloud.desktop
 Nextcloud desktop sync client ,nextcloud,Nextcloud
 # /usr/share/applications/xfce4-run.desktop
 # /usr/share/applications/org.gnome.Screenshot.desktop
 Screenshot,gnome-screenshot --interactive,org.gnome.Screenshot
-# /usr/share/applications/exo-terminal-emulator.desktop
-Terminal Emulator,exo-open --launch TerminalEmulator,utilities-terminal
+# /usr/share/applications/xfce4-terminal-emulator.desktop
+Terminal Emulator,exo-open --launch TerminalEmulator,org.xfce.terminalemulator
+# /usr/share/applications/ulauncher.desktop
+Ulauncher,env GDK_BACKEND=x11 /usr/bin/ulauncher --hide-window,ulauncher
 # /usr/share/applications/vim.desktop
 Vim,^term(vim),gvim
 # /usr/share/applications/winetricks.desktop
 Winetricks,winetricks --gui,winetricks
+# /usr/share/applications/Flashtool.desktop
+Xperia Flashtool,/usr/bin/flashtool,/usr/share/icons/Flashtool.png
 # /usr/share/applications/compton.desktop
 compton,compton,compton
 # /usr/share/applications/nitrogen.desktop
@@ -54,13 +65,27 @@ submenu,^tag(Development)
 Back,^back(),go-previous
 # /usr/share/applications/cmake-gui.desktop
 CMake,cmake-gui ,CMakeSetup
+# /usr/share/applications/org.kde.cuttlefish.desktop
+Cuttlefish,cuttlefish,cuttlefish
+# /usr/share/applications/fluid.desktop
+FLUID,fluid ,fluid
 # /usr/share/applications/heimdall.desktop
 Heimdall,heimdall-frontend,phone
 # /usr/share/applications/jconsole.desktop
+# /usr/share/applications/org.kde.plasmaengineexplorer.desktop
+Plasma Engine Explorer,plasmaengineexplorer,plasma
+# /usr/share/applications/org.kde.plasma.lookandfeelexplorer.desktop
+Plasma Global Theme Explorer,lookandfeelexplorer,preferences-desktop-theme
+# /usr/share/applications/org.kde.plasma.themeexplorer.desktop
+Plasma Theme Explorer,plasmathemeexplorer,preferences-desktop-theme
 # /usr/share/applications/assistant.desktop
 # /usr/share/applications/designer.desktop
 # /usr/share/applications/linguist.desktop
 # /usr/share/applications/qdbusviewer.desktop
+# /usr/share/applications/UserFeedbackConsole.desktop
+UserFeedback Console,UserFeedbackConsole,search
+# /usr/share/applications/visualvm.desktop
+VisualVM,/usr/bin/visualvm,/usr/share/visualvm/icon.png
 
 # /usr/share/desktop-directories/Game.directory
 submenu,^tag(Games)
@@ -70,9 +95,15 @@ DeSmuME (Gtk),desmume,DeSmuME
 # /usr/share/applications/dolphin-emu.desktop
 Dolphin Emulator,env QT_QPA_PLATFORM=xcb dolphin-emu,dolphin-emu
 # /usr/share/applications/minecraft-launcher.desktop
-Minecraft Launcher,cd /opt/minecraft-launcher/;/opt/minecraft-launcher/minecraft-launcher,minecraft-launcher
+Minecraft Launcher,minecraft-launcher,minecraft-launcher
+# /usr/share/applications/multimc.desktop
+MultiMC,multimc,multimc
 # /usr/share/applications/opensurge.desktop
 Open Surge,opensurge,opensurge
+# /usr/share/applications/ut.desktop
+Unreal Tournament,/usr/bin/padsp /usr/bin/ut,ut
+# /usr/share/applications/sh.ppy.osu.lazer.desktop
+osu!lazer,osu-lazer ,osu-lazer
 
 # /usr/share/desktop-directories/xfce-graphics.directory
 submenu,^tag(Graphics)
@@ -115,30 +146,38 @@ FileZilla,filezilla,filezilla
 Firefox,/usr/lib/firefox/firefox ,firefox
 # /usr/share/applications/io.github.Hexchat.desktop
 HexChat,hexchat --existing ,hexchat
-# /usr/share/applications/exo-mail-reader.desktop
-Mail Reader,exo-open --launch MailReader ,emblem-mail
-# /usr/share/applications/teams.desktop
-Microsoft Teams - Preview,/usr/bin/teams ,teams
+# /usr/share/applications/xfce4-mail-reader.desktop
+Mail Reader,exo-open --launch MailReader ,org.xfce.mailreader
 # /usr/share/applications/pidgin.desktop
 Pidgin Internet Messenger,pidgin,pidgin
 # /usr/share/applications/putty.desktop
 PuTTY,putty ,putty
+# /usr/share/applications/skypeforlinux.desktop
+Skype Preview,/usr/bin/skypeforlinux ,skypeforlinux
 # /usr/share/applications/soulseekqt.desktop
 SoulSeekQT,soulseekqt,soulseek
-# /usr/share/applications/exo-web-browser.desktop
-Web Browser,exo-open --launch WebBrowser ,web-browser
+# /usr/share/applications/telegramdesktop.desktop
+Telegram Desktop,telegram-desktop -- ,telegram
+# /usr/share/applications/xfce4-web-browser.desktop
+Web Browser,exo-open --launch WebBrowser ,org.xfce.webbrowser
 # /usr/share/applications/Zoom.desktop
 Zoom,/usr/bin/zoom ,Zoom
 # /usr/share/applications/org.qbittorrent.qBittorrent.desktop
 qBittorrent,qbittorrent ,qbittorrent
 
-# /usr/share/desktop-directories/xfce-multimedia.directory
+# /usr/share/desktop-directories/kf5-multimedia.directory
 submenu,^tag(Multimedia)
 Back,^back(),go-previous
 # /usr/share/applications/audacious.desktop
 Audacious,audacious ,audacious
 # /usr/share/applications/audacity.desktop
 Audacity,env UBUNTU_MENUPROXY=0 audacity ,audacity
+# /usr/share/applications/brasero.desktop
+Brasero,brasero ,brasero
+# /usr/share/applications/org.gnome.Cheese.desktop
+Cheese,cheese,org.gnome.Cheese
+# /usr/share/applications/clementine.desktop
+Clementine,clementine ,clementine
 # /usr/share/applications/org.kde.k3b.desktop
 K3b,k3b ,k3b
 # /usr/share/applications/org.kde.kdenlive.desktop
@@ -147,8 +186,6 @@ Kdenlive,kdenlive ,kdenlive
 MusicBrainz Picard,picard ,org.musicbrainz.Picard
 # /usr/share/applications/com.obsproject.Studio.desktop
 OBS Studio,obs,com.obsproject.Studio
-# /usr/share/applications/openmpt.desktop
-OpenMPT,openmpt,openmpt
 # /usr/share/applications/com.github.pulseaudio-equalizer-ladspa.Equalizer.desktop
 PulseAudio Equalizer,pulseaudio-equalizer-gtk,multimedia-volume-control
 # /usr/share/applications/paman.desktop
@@ -159,12 +196,18 @@ PulseAudio Volume Control,pavucontrol,multimedia-volume-control
 # /usr/share/applications/qvidcap.desktop
 # /usr/share/applications/spotify.desktop
 Spotify,spotify ,spotify-client
+# /usr/share/applications/vlc.desktop
+VLC media player,/usr/bin/vlc --started-from-file ,vlc
+# /usr/share/applications/butt.desktop
+butt,butt ,butt
 # /usr/share/applications/mpv.desktop
 mpv Media Player,mpv --player-operation-mode=pseudo-gui -- ,mpv
 
 # /usr/share/desktop-directories/Office.directory
 submenu,^tag(Office)
 Back,^back(),go-previous
+# /usr/share/applications/org.gnome.Calendar.desktop
+Calendar,gnome-calendar,org.gnome.Calendar
 # /usr/share/applications/libreoffice-startcenter.desktop
 LibreOffice,libreoffice ,libreoffice-startcenter
 # /usr/share/applications/libreoffice-base.desktop
@@ -180,47 +223,81 @@ LibreOffice Math,libreoffice --math ,libreoffice-math
 # /usr/share/applications/libreoffice-writer.desktop
 LibreOffice Writer,libreoffice --writer ,libreoffice-writer
 
-# /usr/share/desktop-directories/xfce-settings.directory
-submenu,^tag(Settings)
+# /usr/share/desktop-directories/X-GNOME-Other.directory
+submenu,^tag(Other)
 Back,^back(),go-previous
+# /usr/share/applications/cutecom.desktop
+CuteCom,cutecom,cutecom
+# /usr/share/applications/plasma-windowed.desktop
+Plasma Windowed,plasmawindowed ,plasma
+
+# /usr/share/desktop-directories/kf5-utilities-accessibility.directory
+submenu,^tag(Accessibility)
+Back,^back(),go-previous
+# /usr/share/applications/xfce4-accessibility-settings.desktop
+Accessibility,xfce4-accessibility-settings,org.xfce.settings.accessibility
 # /usr/share/applications/nm-connection-editor.desktop
 Advanced Network Configuration,nm-connection-editor,preferences-system-network
+# /usr/share/applications/xfce-ui-settings.desktop
+Appearance,xfce4-appearance-settings,org.xfce.settings.appearance
 # /usr/share/applications/blueman-adapters.desktop
 Bluetooth Adapters,blueman-adapters,blueman-device
 # /usr/share/applications/blueman-manager.desktop
 Bluetooth Manager,blueman-manager,blueman
+# /usr/share/applications/xfce4-color-settings.desktop
+Color Profiles,xfce4-color-settings,org.xfce.settings.color
+# /usr/share/applications/lxappearance.desktop
+Customize Look and Feel,lxappearance,preferences-desktop-theme
+# /usr/share/applications/xfce4-mime-settings.desktop
+Default Applications,xfce4-mime-settings,org.xfce.settings.default-applications
 # /usr/share/applications/xfce-backdrop-settings.desktop
+# /usr/share/applications/xfce-display-settings.desktop
+Display,xfce4-display-settings,org.xfce.settings.display
 # /usr/share/applications/thunar-settings.desktop
-File Manager Settings,thunar-settings,system-file-manager
+File Manager Settings,thunar-settings,org.xfce.thunar
+# /usr/share/applications/kdesystemsettings.desktop
+KDE System Settings,systemsettings5,preferences-system
+# /usr/share/applications/xfce-keyboard-settings.desktop
+Keyboard,xfce4-keyboard-settings,org.xfce.settings.keyboard
 # /usr/share/applications/lxrandr.desktop
 Monitor Settings,lxrandr,video-display
+# /usr/share/applications/xfce-mouse-settings.desktop
+Mouse and Touchpad,xfce4-mouse-settings,org.xfce.settings.mouse
 # /usr/share/applications/xfce4-notifyd-config.desktop
-Notifications,xfce4-notifyd-config,xfce4-notifyd
+Notifications,xfce4-notifyd-config,org.xfce.notification
 # /usr/share/applications/policytool.desktop
 # /usr/share/applications/obconf.desktop
 Openbox Configuration Manager,obconf ,obconf
 # /usr/share/applications/panel-preferences.desktop
-Panel,xfce4-panel --preferences,xfce4-panel
+Panel,xfce4-panel --preferences,org.xfce.panel
 # /usr/share/applications/xfce4-power-manager-settings.desktop
-Power Manager,xfce4-power-manager-settings,xfce4-power-manager-settings
-# /usr/share/applications/exo-preferred-applications.desktop
-Preferred Applications,exo-preferred-applications,preferences-desktop-default-applications
+Power Manager,xfce4-power-manager-settings,org.xfce.powermanager
 # /usr/share/applications/gksu-properties.desktop
 Privilege granting,gksu-properties,gksu.png
 # /usr/share/applications/thunar-volman-settings.desktop
-Removable Drives and Media,thunar-volman-settings,drive-removable-media
+Removable Drives and Media,thunar-volman-settings,org.xfce.volman
+# /usr/share/applications/xfce-session-settings.desktop
+Session and Startup,xfce4-session-settings,org.xfce.session
+# /usr/share/applications/gnome-control-center.desktop
+Settings,gnome-control-center,org.gnome.Settings
+# /usr/share/applications/xfce4-settings-editor.desktop
+Settings Editor,xfce4-settings-editor,org.xfce.settings.editor
+# /usr/share/applications/xfce-settings-manager.desktop
+Settings Manager,xfce4-settings-manager,org.xfce.settings.manager
+# /usr/share/applications/systemsettings.desktop
+System Settings,systemsettings5,preferences-system
 # /usr/share/applications/tint2conf.desktop
 Tint2 Settings,tint2conf,tint2conf
 # /usr/share/applications/xfce-wm-settings.desktop
-Window Manager,xfwm4-settings,xfwm4
+Window Manager,xfwm4-settings,org.xfce.xfwm4
 # /usr/share/applications/xfce-wmtweaks-settings.desktop
-Window Manager Tweaks,xfwm4-tweaks-settings,wmtweaks
+Window Manager Tweaks,xfwm4-tweaks-settings,org.xfce.xfwm4-tweaks
 # /usr/share/applications/xfce-workspaces-settings.desktop
-Workspaces,xfwm4-workspace-settings,xfce4-workspaces
+Workspaces,xfwm4-workspace-settings,org.xfce.workspaces
 # /usr/share/applications/xfce4-terminal-settings.desktop
-Xfce Terminal,xfce4-terminal --preferences,utilities-terminal
+Xfce Terminal Settings,xfce4-terminal --preferences,org.xfce.terminal-settings
 
-# /usr/share/desktop-directories/xfce-system.directory
+# /usr/share/desktop-directories/kf5-system.directory
 submenu,^tag(System)
 Back,^back(),go-previous
 # /usr/share/applications/avahi-discover.desktop
@@ -228,29 +305,43 @@ Avahi Zeroconf Browser,/usr/bin/avahi-discover,network-wired
 # /usr/share/applications/org.gnome.Boxes.desktop
 Boxes,gnome-boxes ,org.gnome.Boxes
 # /usr/share/applications/thunar-bulk-rename.desktop
-Bulk Rename,/usr/lib/Thunar/ThunarBulkRename ,Thunar
+Bulk Rename,thunar --bulk-rename ,org.xfce.thunar
+# /usr/share/applications/org.gnome.ColorProfileViewer.desktop
+Color Profile Viewer,gcm-viewer,gnome-color-manager
+# /usr/share/applications/org.kde.discover.desktop
+Discover,plasma-discover ,plasmadiscover
 # /usr/share/applications/gparted.desktop
 GParted,/usr/bin/gparted ,gparted
 # /usr/share/applications/lstopo.desktop
 Hardware Locality lstopo,lstopo,application-x-executable
 # /usr/share/applications/htop.desktop
 Htop,^term(htop),htop
+# /usr/share/applications/org.kde.kinfocenter.desktop
+Info Center,kinfocenter,hwinfo
+# /usr/share/applications/org.kde.ksysguard.desktop
+KSysGuard,ksysguard ,utilities-system-monitor
+# /usr/share/applications/gtk-lshw.desktop
+LSHW,/usr/sbin/gtk-lshw,/usr/share/lshw/artwork/logo.svg
+# /usr/share/applications/xfce4-session-logout.desktop
+Log Out,xfce4-session-logout,xfsm-logout
 # /usr/share/applications/org.gnome.Logs.desktop
 Logs,gnome-logs,org.gnome.Logs
 # /usr/share/applications/cups.desktop
 Manage Printing,/usr/bin/xdg-open http://localhost:631/,cups
+# /usr/share/applications/virtualbox.desktop
+Oracle VM VirtualBox,VirtualBox ,virtualbox
 # /usr/share/applications/org.freedesktop.MalcontentControl.desktop
 Parental Controls,malcontent-control,org.freedesktop.MalcontentControl
 # /usr/share/applications/psensor.desktop
 Psensor,psensor,psensor
 # /usr/share/applications/thunar.desktop
-Thunar File Manager,thunar ,Thunar
+Thunar File Manager,thunar ,org.xfce.thunar
 # /usr/share/applications/tint2.desktop
 Tint2,tint2,tint2
-# /usr/share/applications/woeusbgui.desktop
-WoeUSB,woeusbgui,woeusbgui-icon
+# /usr/share/applications/unetbootin.desktop
+UNetbootin,/usr/bin/unetbootin,unetbootin
 # /usr/share/applications/xfce4-terminal.desktop
-Xfce Terminal,xfce4-terminal,utilities-terminal
+Xfce Terminal,xfce4-terminal,org.xfce.terminal
 # /usr/share/applications/jgmenu.desktop
 jgmenu,jgmenu_run,jgmenu
 ^tag(workaround)

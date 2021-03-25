@@ -60,9 +60,9 @@ def fix_string(string):
         return string.encode('utf-8')
 
 # Default parameters
-output = fix_string(u'{play_pause} {artist} - {song}   {extra}')
+output = fix_string(u'{play_pause}')
 trunclen = 25
-play_pause = fix_string(u'%{u#F06292}%{+u}   ,%{u#C2185B}%{+u}   ') # first character is play, second is paused
+play_pause = fix_string(u',') # first character is play, second is paused
 
 label_with_font = '%{{T{font}}}{label}%{{T-}}'
 font = args.font

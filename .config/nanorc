@@ -11,6 +11,11 @@ set nohelp
 set morespace
 set constantshow
 set zap
+set wordbounds
+set positionlog
+set afterends
+
+set minibar
 
 # keybindings
 bind ^X exit all
@@ -30,7 +35,7 @@ bind M-Y redo all
 set titlecolor normal,normal
 set statuscolor normal,normal
 set stripecolor normal,normal
-set selectedcolor brightblue,white
+set selectedcolor mint,normal
 set functioncolor normal,normal
 set keycolor normal,normal
 set errorcolor brightred

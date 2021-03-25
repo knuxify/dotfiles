@@ -9,10 +9,26 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+diary_dir=~/.local/diary
+
+#export lsuses=20
+
+#ls() {
+#	export lsuses=$(($lsuses-1))
+#	if [[ $lsuses -gt 0 ]]; then
+#		echo "$lsuses uses remaining."
+#		/usr/bin/ls $*
+#	else
+#		echo "bash: ls: command not found"
+#	fi
+#}
+
 alias grep='grep --colour=auto'
 alias rb="source ~/.bashrc"
 alias ls="ls -sh --color"
 alias als="ls -shA --color"
+
+[[ -e ~/.gittoken ]] && source ~/.gittoken
 
 # Add local bin folder to path.
 export PATH=$PATH:~/.bin:~/.local/bin
@@ -61,16 +77,20 @@ proj() {
 # today-i - daily activity logger
 # usage: today-i
 today-i() {
-	[[ ! -e ~/today ]] && mkdir ~/today
-	date +%H:%M >> ~/today/$(date +%Y-%m-%d)
-	nano ~/today/$(date +%Y-%m-%d)
-	#echo "$*" >> ~/today/$(date +%Y-%m-%d)
+	date=$(date +%Y-%m-%d)
+	[[ ! -e $diary_dir ]] && mkdir $diary_dir
+	date +%H:%M >> $diary_dir/$date
+	if [[ $* ]]; then
+		echo "$*" >> $diary_dir/$date
+	else
+		nano $diary_dir/$date
+	fi
 }
 yesterday-i() {
-	[[ ! -e ~/today ]] && mkdir ~/today
-	date --date="yesterday" +%H:%M >> ~/today/$(date --date="yesterday" +%Y-%m-%d)
-	nano ~/today/$(date --date="yesterday" +%Y-%m-%d)
-	#echo "$*" >> ~/today/$(date --date="yesterday" +%Y-%m-%d)
+	[[ ! -e $diary_dir ]] && mkdir $diary_dir
+	date --date="yesterday" +%H:%M >> $diary_dir/$(date --date="yesterday" +%Y-%m-%d)
+	nano $diary_dir/$(date --date="yesterday" +%Y-%m-%d)
+	#echo "$*" >> $diary_dir/$(date --date="yesterday" +%Y-%m-%d)
 }
 
 # Get software. Aliased to shoppe, making it work out of the box on every supported system.
@@ -91,17 +111,27 @@ hack() {
 	esac
 }
 
-alias touchtoggle="xinput --set-prop 'AlpsPS/2 ALPS GlidePoint' 315 $1"
+alias touchtoggle="xinput set-prop 'AlpsPS/2 ALPS GlidePoint' 315 $1"
 
 PS1="\W \[\e[0m\]> \[$(tput sgr0)\]"
 
-echo "hi $USER""@$(hostname)! it is currently $(date +%H:%M)"
-echo -e "\e[31m"
+todoshuffler() {
+	highlight="\e[1;3$(( ( RANDOM % 6 ) + 1 ))m"
+	todoitem="#"
+	until [[ $todoitem != "#"* ]]; do
+		todoitem=$(shuf -n 1 ~/TODO)
+	done
+	todoitem=${todoitem:2}
+	echo -e "If you're looking for something to do, why not ${highlight}${todoitem}\e[0m?"
+}
+
+echo -e "hi \e[1;32m$USER""@$(hostname)\e[0m! it is currently $(date +%H:%M)"
 if [[ -e ~/TODO ]] && [[ -s ~/TODO ]]; then
-	figlet "todo:"
-	while IFS="" read -r line || [[ -n "$line" ]]; do [[ "$line" != "#"* ]] && echo "$line"; done < ~/TODO
+	todoshuffler
+#	figlet "todo:"
+#	while IFS="" read -r line || [[ -n "$line" ]]; do [[ "$line" != "#"* ]] && echo "$line"; done < ~/TODO
 fi
-echo -e "\e[0mdon't forget to run \e[31mtoday-i\e[0m when you're done with a task!\n"
+#echo -e "\e[0mdon't forget to run \e[31mtoday-i\e[0m when you're done with a task!\n"
 export PATH="$PATH:/home/knuxify/.gem/ruby/2.7.0/bin"
 
 sng() {
@@ -134,3 +164,11 @@ brightness_down() {
 brighness_set() {
 	echo "$1" > /sys/class/backlight/intel_backlight/brightness
 }
+
+if [[ ! -e $diary_dir/$(date --date="yesterday" +%Y-%m-%d) ]]; then
+	echo -e "\e[1;31mYou did not make a diary entry yesterday!\e[0m Please run \e[1;32myesterday-i\e[0m."
+fi
+
+if [[ ! -e $diary_dir/$(date +%Y-%m-%d) ]] && [[ $(date +%H) > 17 ]]; then
+	echo -e "\e[1;31mYou did not make a diary entry today!\e[0m Please run \e[1;32mtoday-i\e[0m."
+fi
