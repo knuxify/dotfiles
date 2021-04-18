@@ -1,0 +1,3 @@
+[submodule ".themes/gruvbox-gtk"]
+	path = .themes/gruvbox-gtk
+	url = https://github.com/bennetthardwick/gruvbox-gtk

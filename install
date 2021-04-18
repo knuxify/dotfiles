@@ -18,7 +18,7 @@ for f in $tocopy; do
 		        bashrc) cp .config/bashrc ~/.bashrc;;
 		        nanorc) cp .config/nanorc ~/.nanorc;;
 		      neofetch) cp -rf .config/neofetch ~/.config;;
-		           gtk) cp -rf .config/gtk-3.0 ~/.config; cp .config/gtkrc-2.0 ~/.gtkrc-2.0; [[ ! -e /usr/share/fonts ]] && sudo mkdir -p /usr/share/fonts; sudo cp -r .fonts/* /usr/share/fonts; sudo cp -r .themes/* /usr/share/themes;;
+		           gtk) cp -rf .config/gtk-3.0 ~/.config; cp .config/gtkrc-2.0 ~/.gtkrc-2.0; [[ ! -e /usr/share/fonts ]] && sudo mkdir -p /usr/share/fonts; sudo cp -r .fonts/* /usr/share/fonts; git submodule init; git submodule update; sudo cp -r .themes/* /usr/share/themes;;
 		  herbstluftwm) cp -rf .config/herbstluftwm ~/.config;;
 		       polybar) cp -rf .config/polybar ~/.config;;
 		xfce4-terminal) [[ ! -e ~/.config/xfce4 ]] && mkdir ~/.config/xfce4; cp -r .config/xfce4/terminal ~/.config/xfce4/;;
