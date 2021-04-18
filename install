@@ -2,7 +2,7 @@
 # Dotfile installer
 # Usage: install <files> or install all or install list
 
-available="bashrc nanorc neofetch gtk herbstluftwm polybar xfce4-terminal rofi backgrounds jgmenu picom bin"
+available="bashrc nanorc neofetch gtk herbstluftwm polybar xfce4-terminal rofi backgrounds jgmenu picom bin dunst"
 [[ -z "$*" ]] && echo "Usage: install <names> or install all or install list" && exit 1
 [[ "$*" == *"list"* ]] && echo "$available"
 
@@ -27,6 +27,7 @@ for f in $tocopy; do
 		        jgmenu) cp -rf .config/jgmenu ~/.config;;
 			     picom) cp -rf .config/picom ~/.config; [[ -e ~/.config/compton.conf ]] && mv ~/.config/compton.conf{,.old};;
 			       bin) [[ ! -e ~/.bin ]] && mkdir ~/.bin; cp -rf .bin/* ~/.bin/;;
+		         dunst) cp -rd .config/dunst ~/.config;;
 	esac
 done
 

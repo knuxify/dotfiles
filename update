@@ -2,7 +2,7 @@
 # Update dotfiles
 # Usage: update <names> or update all or update list
 
-available="bashrc nanorc neofetch gtk herbstluftwm polybar xfce4-terminal rofi backgrounds jgmenu picom"
+available="bashrc nanorc neofetch gtk herbstluftwm polybar xfce4-terminal rofi backgrounds jgmenu picom dunst"
 [[ -z "$*" ]] && echo "Usage: update <names> or update all or update list" && exit 1
 [[ "$*" == *"list"* ]] && echo "$available"
 
@@ -26,6 +26,7 @@ for f in $tocopy; do
 		   backgrounds) cp -rf ~/.backgrounds .;;
 		        jgmenu) cp -rf ~/.config/jgmenu .config;;
 		         picom) cp -rf ~/.config/picom .config;;
+		         dunst) cp -rf ~/.config/dunst .config;;
     esac
 done
 
