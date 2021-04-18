@@ -3,9 +3,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 [colors]
 color_darkbg  = #DD282828
-color_lightbg = #445E44
+;color_lightbg = #445E44
+color_lightbg = #3E4F69
 shade_darkbg  = #DD282828
-shade_lightbg = #445E44
+;shade_lightbg = #445E44
+shade_lightbg = #3E4F69
+button = #5F5F6B
 fg = #D2C4A1
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -54,7 +57,8 @@ type = custom/text
 content = " "
 content-padding = 4
 content-radius-top = 0.5
-content-background = ${colors.shade_lightbg}
+;content-background = ${colors.shade_lightbg}
+content-background = ${colors.button}
 click-left = jgmenu_run &>/dev/null
 
 [module/workspaces]

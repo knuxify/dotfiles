@@ -124,6 +124,8 @@ Krita,krita ,krita
 Okular,okular ,okular
 # /usr/share/applications/com.uploadedlobster.peek.desktop
 Peek,peek,com.uploadedlobster.peek
+# /usr/share/applications/pinta.desktop
+Pinta,pinta ,pinta
 # /usr/share/applications/org.kde.skanlite.desktop
 Skanlite,skanlite -qwindowtitle %i,scanner
 
@@ -196,6 +198,8 @@ PulseAudio Volume Control,pavucontrol,multimedia-volume-control
 # /usr/share/applications/qvidcap.desktop
 # /usr/share/applications/spotify.desktop
 Spotify,spotify ,spotify-client
+# /var/lib/snapd/desktop/applications/spotify_spotify.desktop
+Spotify,env BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/spotify_spotify.desktop /var/lib/snapd/snap/bin/spotify ,/var/lib/snapd/snap/spotify/46/usr/share/spotify/icons/spotify-linux-128.png
 # /usr/share/applications/vlc.desktop
 VLC media player,/usr/bin/vlc --started-from-file ,vlc
 # /usr/share/applications/butt.desktop
@@ -286,6 +290,8 @@ Settings Editor,xfce4-settings-editor,org.xfce.settings.editor
 Settings Manager,xfce4-settings-manager,org.xfce.settings.manager
 # /usr/share/applications/systemsettings.desktop
 System Settings,systemsettings5,preferences-system
+# /usr/share/applications/com.github.themix_project.Oomox.desktop
+Themix/Oomox theme designer,oomox-gui,com.github.themix_project.Oomox
 # /usr/share/applications/tint2conf.desktop
 Tint2 Settings,tint2conf,tint2conf
 # /usr/share/applications/xfce-wm-settings.desktop

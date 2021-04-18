@@ -2,7 +2,7 @@
 MiscAlwaysShowTabs=FALSE
 MiscBell=FALSE
 MiscBellUrgent=FALSE
-MiscBordersDefault=TRUE
+MiscBordersDefault=FALSE
 MiscCursorBlinks=FALSE
 MiscCursorShape=TERMINAL_CURSOR_SHAPE_BLOCK
 MiscDefaultGeometry=80x24
@@ -30,9 +30,11 @@ FontName=Terminus (TTF) Medium 12
 BackgroundDarkness=1.000000
 ScrollingLines=10000
 ScrollingUnlimited=TRUE
-ColorForeground=#f776ea7fc945
-ColorBackground=#242424242424
+ColorForeground=#ebdbb2
+ColorBackground=#282828
 ColorPalette=#282828;#cc241d;#98971a;#d79921;#458588;#b16286;#689d6a;#a89984;#928374;#fb4934;#b8bb26;#fabd2f;#83a598;#d3869b;#8ec07c;#ebdbb2
 ScrollingOnOutput=FALSE
 TabActivityColor=#bf4040
+ColorCursor=x
+ColorBoldIsBright=FALSE
 
