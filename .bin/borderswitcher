@@ -1,0 +1,11 @@
+#!/bin/sh
+conffile=~/.config/herbstluftwm/comfymode
+conf=$(cat $conffile)
+echo $conf
+if [ $conf = "1" ]; then
+	herbstclient pad 0 40 20 20 20
+	echo "0" > $conffile
+else
+	herbstclient pad 0 40 120 20 120
+	echo "1" > $conffile
+fi
