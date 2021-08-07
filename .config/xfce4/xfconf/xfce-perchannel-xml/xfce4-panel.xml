@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<channel name="xfce4-panel" version="1.0">
+  <property name="configver" type="int" value="2"/>
+  <property name="panels" type="array">
+    <value type="int" value="1"/>
+    <value type="int" value="2"/>
+    <property name="dark-mode" type="bool" value="true"/>
+    <property name="panel-1" type="empty">
+      <property name="position" type="string" value="p=6;x=960;y=17"/>
+      <property name="length" type="uint" value="100"/>
+      <property name="position-locked" type="bool" value="true"/>
+      <property name="icon-size" type="uint" value="16"/>
+      <property name="size" type="uint" value="32"/>
+      <property name="plugin-ids" type="array">
+        <value type="int" value="7"/>
+        <value type="int" value="5"/>
+        <value type="int" value="8"/>
+        <value type="int" value="9"/>
+        <value type="int" value="6"/>
+        <value type="int" value="11"/>
+        <value type="int" value="12"/>
+        <value type="int" value="13"/>
+        <value type="int" value="19"/>
+      </property>
+      <property name="mode" type="uint" value="0"/>
+      <property name="length-adjust" type="bool" value="true"/>
+      <property name="nrows" type="uint" value="1"/>
+      <property name="background-style" type="uint" value="0"/>
+      <property name="background-rgba" type="array">
+        <value type="double" value="0.543333"/>
+        <value type="double" value="0.521600"/>
+        <value type="double" value="0.521600"/>
+        <value type="double" value="0.402685"/>
+      </property>
+      <property name="disable-struts" type="bool" value="false"/>
+      <property name="autohide-behavior" type="uint" value="0"/>
+      <property name="enter-opacity" type="uint" value="100"/>
+      <property name="leave-opacity" type="uint" value="100"/>
+    </property>
+    <property name="panel-2" type="empty">
+      <property name="position" type="string" value="p=10;x=953;y=1055"/>
+      <property name="size" type="uint" value="48"/>
+      <property name="position-locked" type="bool" value="true"/>
+      <property name="mode" type="uint" value="0"/>
+      <property name="disable-struts" type="bool" value="false"/>
+      <property name="plugin-ids" type="array">
+        <value type="int" value="16"/>
+        <value type="int" value="15"/>
+        <value type="int" value="4"/>
+        <value type="int" value="17"/>
+        <value type="int" value="14"/>
+      </property>
+      <property name="length" type="uint" value="100"/>
+      <property name="icon-size" type="uint" value="36"/>
+    </property>
+  </property>
+  <property name="plugins" type="empty">
+    <property name="plugin-5" type="string" value="separator">
+      <property name="style" type="uint" value="0"/>
+      <property name="expand" type="bool" value="true"/>
+    </property>
+    <property name="plugin-6" type="string" value="systray">
+      <property name="square-icons" type="bool" value="true"/>
+      <property name="known-legacy-items" type="array">
+        <value type="string" value="thunar"/>
+        <value type="string" value="quassel"/>
+        <value type="string" value="clementine"/>
+        <value type="string" value="audacious"/>
+        <value type="string" value="xfce4-power-manager"/>
+        <value type="string" value="gpick"/>
+        <value type="string" value="obs"/>
+        <value type="string" value="blueman"/>
+        <value type="string" value="blueman-tray"/>
+        <value type="string" value="discord"/>
+        <value type="string" value="networkmanager applet"/>
+      </property>
+    </property>
+    <property name="plugin-9" type="string" value="power-manager-plugin"/>
+    <property name="plugin-11" type="string" value="separator">
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-12" type="string" value="clock">
+      <property name="mode" type="uint" value="2"/>
+    </property>
+    <property name="plugin-13" type="string" value="separator">
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-7" type="string" value="whiskermenu"/>
+    <property name="plugin-8" type="string" value="pulseaudio">
+      <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
+      <property name="mpris-players" type="string" value="__;audacious;clementine;firefox.instance18419;firefox.instance3027;firefox.instance3347;firefox.instance3358;firefox.instance3362;firefox.instance3383;firefox.instance3392;firefox.instance3396;firefox.instance3403;firefox.instance3408;firefox.instance3409;firefox.instance3411;firefox.instance3430;firefox.instance3432;firefox.instance3450;firefox.instance3452;firefox.instance3457;firefox.instance3462;firefox.instance3512;firefox.instance3560;firefox.instance3613;firefox.instance3658;firefox.instance3678;firefox.instance3692;firefox.instance3814;firefox.instance5187;firefox.instance5978;firefox.instance7094;firefox.instance9964;spotify"/>
+      <property name="show-notifications" type="bool" value="true"/>
+    </property>
+    <property name="plugin-14" type="string" value="pager"/>
+    <property name="plugin-15" type="string" value="separator">
+      <property name="expand" type="bool" value="true"/>
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-16" type="string" value="tasklist">
+      <property name="flat-buttons" type="bool" value="true"/>
+      <property name="show-labels" type="bool" value="false"/>
+      <property name="show-handle" type="bool" value="false"/>
+      <property name="show-only-minimized" type="bool" value="false"/>
+      <property name="include-all-monitors" type="bool" value="true"/>
+      <property name="window-scrolling" type="bool" value="false"/>
+      <property name="show-wireframes" type="bool" value="false"/>
+      <property name="grouping" type="uint" value="0"/>
+    </property>
+    <property name="plugin-17" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="16270466003.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-19" type="string" value="showdesktop"/>
+    <property name="plugin-4" type="string" value="xfce4-sensors-plugin"/>
+  </property>
+</channel>
