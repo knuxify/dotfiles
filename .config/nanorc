@@ -1,14 +1,14 @@
 # knux's nanorc
 
 set tabsize 4
-set smooth
+#set smooth
 set softwrap
 set linenumbers
 unset mouse
 set atblanks
 set showcursor
 set nohelp
-set morespace
+#set morespace
 set constantshow
 set zap
 set wordbounds

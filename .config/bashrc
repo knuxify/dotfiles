@@ -28,6 +28,19 @@ alias rb="source ~/.bashrc"
 alias ls="ls -sh --color"
 alias als="ls -shA --color"
 
+commitpkgs() {
+	git reset origin/master
+	for pkg in $*; do
+		source $pkg/APKBUILD;
+		git add $pkg;
+		git commit -m "testing/$pkg: new aport
+ 
+$url
+$pkgdesc";
+	done
+	git push --force
+}
+
 [[ -e ~/.gittoken ]] && source ~/.gittoken
 
 # Add local bin folder to path.
