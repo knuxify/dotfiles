@@ -9,19 +9,7 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-diary_dir=~/.local/diary
-
-#export lsuses=20
-
-#ls() {
-#	export lsuses=$(($lsuses-1))
-#	if [[ $lsuses -gt 0 ]]; then
-#		echo "$lsuses uses remaining."
-#		/usr/bin/ls $*
-#	else
-#		echo "bash: ls: command not found"
-#	fi
-#}
+export GPG_TTY=$(tty)
 
 alias grep='grep --colour=auto'
 alias rb="source ~/.bashrc"
@@ -51,7 +39,6 @@ complete -cf sudo
 shopt -s checkwinsize; shopt -s expand_aliases; shopt -s histappend
 
 # Some useful variables
-gh="https://github.com"
 export EDITOR=nano
 
 masochist-mode() {
@@ -106,10 +93,6 @@ yesterday-i() {
 	#echo "$*" >> $diary_dir/$(date --date="yesterday" +%Y-%m-%d)
 }
 
-# Get software. Aliased to shoppe, making it work out of the box on every supported system.
-alias pget="shoppe install --noconfirm"
-alias prem="shoppe remove --noconfirm"
-
 alias tilde="mosh -ssh 'ssh -i ~/.ssh/tilde.town' knuxify@tilde.town"
 
 hack() {
@@ -119,7 +102,6 @@ hack() {
 		hc1|susie|104) ssh ${huser}192.168.1.104;;
 		satellite|mc|lancer|114) ssh ${huser}192.168.1.111;;
 		pi|muffet) ssh ${huser}192.168.1.103;;
-		#tunnel|vps) mosh ${huser}user2.polaron.srv.jortage.com;;
 		tunnel) ssh -p 420 ${huser}user2.polaron.srv.jortage.com;;
 	esac
 }
@@ -127,25 +109,6 @@ hack() {
 alias touchtoggle="xinput set-prop 'AlpsPS/2 ALPS GlidePoint' 315 $1"
 
 PS1="\W \[\e[0m\]> \[$(tput sgr0)\]"
-
-todoshuffler() {
-	highlight="\e[1;3$(( ( RANDOM % 6 ) + 1 ))m"
-	todoitem="#"
-	until [[ $todoitem != "#"* ]]; do
-		todoitem=$(shuf -n 1 ~/TODO)
-	done
-	todoitem=${todoitem:2}
-	echo -e "If you're looking for something to do, why not ${highlight}${todoitem}\e[0m?"
-}
-
-echo -e "hi \e[1;32m$USER""@$(hostname)\e[0m! it is currently $(date +%H:%M)"
-if [[ -e ~/TODO ]] && [[ -s ~/TODO ]]; then
-	todoshuffler
-#	figlet "todo:"
-#	while IFS="" read -r line || [[ -n "$line" ]]; do [[ "$line" != "#"* ]] && echo "$line"; done < ~/TODO
-fi
-#echo -e "\e[0mdon't forget to run \e[31mtoday-i\e[0m when you're done with a task!\n"
-export PATH="$PATH:/home/knuxify/.gem/ruby/2.7.0/bin"
 
 sng() {
 	sngtmp="$PWD"
@@ -158,30 +121,23 @@ sng() {
 	unset sngtmp
 }
 
-brightness_up() {
-	change=5
-	[[ $1 ]] && change=$1
-	brightness=$(cat /sys/class/backlight/intel_backlight/brightness)
-	let $brightness+$change
-	echo "$brightness" > /sys/class/backlight/intel_backlight/brightness
+alias "pesky=sudo rc-service postgresql start"
+
+# get current branch in git repo
+function parse_git_branch() {
+	BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+	if [ ! "${BRANCH}" == "" ]
+	then
+		echo "[${BRANCH}] "
+	else
+		echo ""
+	fi
 }
 
-brightness_down() {
-	change=5
-	[[ $1 ]] && change=$1
-	brightness=$(cat /sys/class/backlight/intel_backlight/brightness)
-	let $brightness-$change
-	echo "$brightness" > /sys/class/backlight/intel_backlight/brightness
+export PS1="\[\e[1;37m\]\`parse_git_branch\`\[\e[0m\]\W \[\e[1;33m\]>>\[\e[0m\] "
+
+newbranch() {
+	git pull origin
+	git checkout origin
+	git checkout -b $1
 }
-
-brighness_set() {
-	echo "$1" > /sys/class/backlight/intel_backlight/brightness
-}
-
-if [[ ! -e $diary_dir/$(date --date="yesterday" +%Y-%m-%d) ]]; then
-	echo -e "\e[1;31mYou did not make a diary entry yesterday!\e[0m Please run \e[1;32myesterday-i\e[0m."
-fi
-
-if [[ ! -e $diary_dir/$(date +%Y-%m-%d) ]] && [[ $(date +%H) > 17 ]]; then
-	echo -e "\e[1;31mYou did not make a diary entry today!\e[0m Please run \e[1;32mtoday-i\e[0m."
-fi

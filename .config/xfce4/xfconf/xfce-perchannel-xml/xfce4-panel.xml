@@ -5,33 +5,34 @@
   <property name="panels" type="array">
     <value type="int" value="1"/>
     <value type="int" value="2"/>
-    <property name="dark-mode" type="bool" value="true"/>
+    <property name="dark-mode" type="bool" value="false"/>
     <property name="panel-1" type="empty">
       <property name="position" type="string" value="p=6;x=960;y=17"/>
       <property name="length" type="uint" value="100"/>
       <property name="position-locked" type="bool" value="true"/>
       <property name="icon-size" type="uint" value="16"/>
-      <property name="size" type="uint" value="32"/>
+      <property name="size" type="uint" value="26"/>
       <property name="plugin-ids" type="array">
-        <value type="int" value="7"/>
+        <value type="int" value="2"/>
         <value type="int" value="5"/>
-        <value type="int" value="8"/>
+        <value type="int" value="3"/>
         <value type="int" value="9"/>
         <value type="int" value="6"/>
+        <value type="int" value="1"/>
         <value type="int" value="11"/>
         <value type="int" value="12"/>
         <value type="int" value="13"/>
         <value type="int" value="19"/>
       </property>
       <property name="mode" type="uint" value="0"/>
-      <property name="length-adjust" type="bool" value="true"/>
+      <property name="length-adjust" type="bool" value="false"/>
       <property name="nrows" type="uint" value="1"/>
       <property name="background-style" type="uint" value="0"/>
       <property name="background-rgba" type="array">
-        <value type="double" value="0.543333"/>
-        <value type="double" value="0.521600"/>
-        <value type="double" value="0.521600"/>
-        <value type="double" value="0.402685"/>
+        <value type="double" value="0.752941"/>
+        <value type="double" value="0.749020"/>
+        <value type="double" value="0.737255"/>
+        <value type="double" value="1.000000"/>
       </property>
       <property name="disable-struts" type="bool" value="false"/>
       <property name="autohide-behavior" type="uint" value="0"/>
@@ -39,8 +40,8 @@
       <property name="leave-opacity" type="uint" value="100"/>
     </property>
     <property name="panel-2" type="empty">
-      <property name="position" type="string" value="p=10;x=953;y=1055"/>
-      <property name="size" type="uint" value="48"/>
+      <property name="position" type="string" value="p=10;x=950;y=1061"/>
+      <property name="size" type="uint" value="32"/>
       <property name="position-locked" type="bool" value="true"/>
       <property name="mode" type="uint" value="0"/>
       <property name="disable-struts" type="bool" value="false"/>
@@ -48,11 +49,21 @@
         <value type="int" value="16"/>
         <value type="int" value="15"/>
         <value type="int" value="4"/>
-        <value type="int" value="17"/>
-        <value type="int" value="14"/>
+        <value type="int" value="7"/>
       </property>
-      <property name="length" type="uint" value="100"/>
-      <property name="icon-size" type="uint" value="36"/>
+      <property name="length" type="uint" value="36"/>
+      <property name="icon-size" type="uint" value="16"/>
+      <property name="background-style" type="uint" value="0"/>
+      <property name="background-rgba" type="array">
+        <value type="double" value="0.750000"/>
+        <value type="double" value="0.250000"/>
+        <value type="double" value="0.250000"/>
+        <value type="double" value="0.000000"/>
+      </property>
+      <property name="length-adjust" type="bool" value="true"/>
+      <property name="autohide-behavior" type="uint" value="2"/>
+      <property name="enter-opacity" type="uint" value="100"/>
+      <property name="leave-opacity" type="uint" value="50"/>
     </property>
   </property>
   <property name="plugins" type="empty">
@@ -63,6 +74,10 @@
     <property name="plugin-6" type="string" value="systray">
       <property name="square-icons" type="bool" value="true"/>
       <property name="known-legacy-items" type="array">
+        <value type="string" value="bluetooth active &lt;b&gt;1 active connection&lt;/b&gt;"/>
+        <value type="string" value="openrgb"/>
+        <value type="string" value="hexchat"/>
+        <value type="string" value="bluetooth enabled"/>
         <value type="string" value="thunar"/>
         <value type="string" value="quassel"/>
         <value type="string" value="clementine"/>
@@ -75,6 +90,11 @@
         <value type="string" value="discord"/>
         <value type="string" value="networkmanager applet"/>
       </property>
+      <property name="known-items" type="array">
+        <value type="string" value="openrgb"/>
+        <value type="string" value="discord1"/>
+        <value type="string" value="blueman"/>
+      </property>
     </property>
     <property name="plugin-9" type="string" value="power-manager-plugin"/>
     <property name="plugin-11" type="string" value="separator">
@@ -82,23 +102,23 @@
     </property>
     <property name="plugin-12" type="string" value="clock">
       <property name="mode" type="uint" value="2"/>
+      <property name="tooltip-format" type="string" value="%A %d %B %Y"/>
+      <property name="digital-format" type="string" value="%d/%m/%y, %R"/>
     </property>
     <property name="plugin-13" type="string" value="separator">
       <property name="style" type="uint" value="0"/>
     </property>
-    <property name="plugin-7" type="string" value="whiskermenu"/>
     <property name="plugin-8" type="string" value="pulseaudio">
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
       <property name="mpris-players" type="string" value="__;audacious;clementine;firefox.instance18419;firefox.instance3027;firefox.instance3347;firefox.instance3358;firefox.instance3362;firefox.instance3383;firefox.instance3392;firefox.instance3396;firefox.instance3403;firefox.instance3408;firefox.instance3409;firefox.instance3411;firefox.instance3430;firefox.instance3432;firefox.instance3450;firefox.instance3452;firefox.instance3457;firefox.instance3462;firefox.instance3512;firefox.instance3560;firefox.instance3613;firefox.instance3658;firefox.instance3678;firefox.instance3692;firefox.instance3814;firefox.instance5187;firefox.instance5978;firefox.instance7094;firefox.instance9964;spotify"/>
       <property name="show-notifications" type="bool" value="true"/>
     </property>
-    <property name="plugin-14" type="string" value="pager"/>
     <property name="plugin-15" type="string" value="separator">
       <property name="expand" type="bool" value="true"/>
       <property name="style" type="uint" value="0"/>
     </property>
     <property name="plugin-16" type="string" value="tasklist">
-      <property name="flat-buttons" type="bool" value="true"/>
+      <property name="flat-buttons" type="bool" value="false"/>
       <property name="show-labels" type="bool" value="false"/>
       <property name="show-handle" type="bool" value="false"/>
       <property name="show-only-minimized" type="bool" value="false"/>
@@ -107,12 +127,63 @@
       <property name="show-wireframes" type="bool" value="false"/>
       <property name="grouping" type="uint" value="0"/>
     </property>
-    <property name="plugin-17" type="string" value="launcher">
-      <property name="items" type="array">
-        <value type="string" value="16270466003.desktop"/>
+    <property name="plugin-19" type="string" value="showdesktop"/>
+    <property name="plugin-2" type="string" value="whiskermenu"/>
+    <property name="plugin-3" type="string" value="pulseaudio">
+      <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
+      <property name="mpris-players" type="string" value="audacious;chromium.instance33276;chromium.instance3334;chromium.instance4399;chromium.instance562101;chromium.instance6563;clementine;firefox.instance11356;firefox.instance11501;firefox.instance11922;firefox.instance13106;firefox.instance14601;firefox.instance14840;firefox.instance14953;firefox.instance15518;firefox.instance1558;firefox.instance17586;firefox.instance19483;firefox.instance2079;firefox.instance2212;firefox.instance24406;firefox.instance2556;firefox.instance26030;firefox.instance26769;firefox.instance3319;firefox.instance4384;firefox.instance4388;firefox.instance4391;firefox.instance4393;firefox.instance4399;firefox.instance4404;firefox.instance4410;firefox.instance4411;firefox.instance4417;firefox.instance4418;firefox.instance4420;firefox.instance4421;firefox.instance4423;firefox.instance4426;firefox.instance4427;firefox.instance4430;firefox.instance4444;firefox.instance4451;firefox.instance4452;firefox.instance4462;firefox.instance4464;firefox.instance4465;firefox.instance4466;firefox.instance4470;firefox.instance4482;firefox.instance4485;firefox.instance4490;firefox.instance4496;firefox.instance4507;firefox.instance4519;firefox.instance4559;firefox.instance4582;firefox.instance4620;firefox.instance4622;firefox.instance4635;firefox.instance4641;firefox.instance4670;firefox.instance4685;firefox.instance4693;firefox.instance4695;firefox.instance4709;firefox.instance4722;firefox.instance4724;firefox.instance4740;firefox.instance4747;firefox.instance4751;firefox.instance4763;firefox.instance4767;firefox.instance4855;firefox.instance4866;firefox.instance4899;firefox.instance4943;firefox.instance5098;firefox.instance5272;firefox.instance5284;firefox.instance5368;firefox.instance5394;firefox.instance5436;firefox.instance6240;firefox.instance7055;firefox.instance7063;firefox.instance7073;firefox.instance7075;firefox.instance7167;firefox.instance7195;firefox.instance7217;firefox.instance7232;firefox.instance7882;firefox.instance7947;firefox.instance8138;firefox.instance9861;spotify"/>
+      <property name="enable-wnck" type="bool" value="false"/>
+      <property name="enable-multimedia-keys" type="bool" value="true"/>
+      <property name="enable-mpris" type="bool" value="true"/>
+      <property name="blacklisted-players" type="string" value="firefox.instance4866"/>
+    </property>
+    <property name="plugin-4" type="string" value="xfce4-sensors-plugin"/>
+    <property name="plugin-1" type="string" value="statusnotifier">
+      <property name="known-items" type="array">
+        <value type="string" value="TelegramDesktop"/>
+        <value type="string" value="Clementine"/>
+        <value type="string" value="openrgb"/>
+        <value type="string" value="discord1"/>
+        <value type="string" value="blueman"/>
+      </property>
+      <property name="square-icons" type="bool" value="false"/>
+      <property name="symbolic-icons" type="bool" value="false"/>
+      <property name="single-row" type="bool" value="false"/>
+    </property>
+    <property name="plugin-7" type="string" value="weather">
+      <property name="location" type="empty">
+        <property name="name" type="string" value="Wroclaw, Poland"/>
+        <property name="latitude" type="string" value="51.104300"/>
+        <property name="longitude" type="string" value="17.033500"/>
+      </property>
+      <property name="msl" type="int" value="121"/>
+      <property name="timezone" type="string" value="Europe/Warsaw"/>
+      <property name="offset" type="string" value="+02:00"/>
+      <property name="cache-max-age" type="int" value="172800"/>
+      <property name="power-saving" type="bool" value="true"/>
+      <property name="units" type="empty">
+        <property name="temperature" type="int" value="0"/>
+        <property name="pressure" type="int" value="0"/>
+        <property name="windspeed" type="int" value="0"/>
+        <property name="precipitation" type="int" value="0"/>
+        <property name="altitude" type="int" value="0"/>
+        <property name="apparent-temperature" type="int" value="0"/>
+      </property>
+      <property name="round" type="bool" value="true"/>
+      <property name="single-row" type="bool" value="true"/>
+      <property name="tooltip-style" type="int" value="1"/>
+      <property name="forecast" type="empty">
+        <property name="layout" type="int" value="1"/>
+        <property name="days" type="int" value="5"/>
+      </property>
+      <property name="theme-dir" type="string" value="/usr/share/xfce4/weather/icons/liquid-dark"/>
+      <property name="scrollbox" type="empty">
+        <property name="show" type="bool" value="true"/>
+        <property name="animate" type="bool" value="true"/>
+        <property name="lines" type="int" value="1"/>
+        <property name="color" type="string" value="rgba(0,0,0,0)"/>
+        <property name="use-color" type="bool" value="false"/>
       </property>
     </property>
-    <property name="plugin-19" type="string" value="showdesktop"/>
-    <property name="plugin-4" type="string" value="xfce4-sensors-plugin"/>
   </property>
 </channel>

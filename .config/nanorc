@@ -41,4 +41,4 @@ set keycolor normal,normal
 set errorcolor brightred
 set numbercolor ,normal
 
-include /usr/share/nano/*
+include ~/.config/nanorc/*

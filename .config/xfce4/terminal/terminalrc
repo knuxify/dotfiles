@@ -26,7 +26,6 @@ MiscSlimTabs=FALSE
 MiscNewTabAdjacent=FALSE
 MiscSearchDialogOpacity=100
 MiscShowUnsafePasteDialog=TRUE
-FontName=DejaVu Sans Mono 12
 BackgroundDarkness=1.000000
 ScrollingLines=10000
 ColorForeground=#ebdbb2
