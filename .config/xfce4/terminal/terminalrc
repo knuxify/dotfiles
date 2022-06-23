@@ -11,7 +11,7 @@ MiscMenubarDefault=TRUE
 MiscMouseAutohide=FALSE
 MiscMouseWheelZoom=TRUE
 MiscToolbarDefault=FALSE
-MiscConfirmClose=TRUE
+MiscConfirmClose=FALSE
 MiscCycleTabs=TRUE
 MiscTabCloseButtons=TRUE
 MiscTabCloseMiddleClick=TRUE
@@ -35,4 +35,6 @@ ScrollingOnOutput=FALSE
 TabActivityColor=#bf4040
 ColorCursor=x
 ColorBoldIsBright=FALSE
+FontName=DejaVu Sans Mono 12
+MiscRightClickAction=TERMINAL_RIGHT_CLICK_ACTION_CONTEXT_MENU
 

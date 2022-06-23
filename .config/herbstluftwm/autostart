@@ -5,6 +5,8 @@
 
 #PATH="$HOME/.bin:$PATH"
 
+echo "A"
+
 hc() {
     herbstclient "$@"
 }

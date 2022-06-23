@@ -1,1 +1,12 @@
 @import 'colors.css';
+/* TWEAKS-START phosh-clock-notch */
+.phosh-topbar-clock {
+	margin-left: 0.0px;
+}
+/* TWEAKS-END phosh-clock-notch */
+/* TWEAKS-START phosh-panel-btn-space */
+.phosh-panel-btn {
+	margin-left: 0.0px;
+	margin-right: 0.0px;
+}
+/* TWEAKS-END phosh-panel-btn-space */

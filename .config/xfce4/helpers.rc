@@ -1,1 +1,4 @@
-WebBrowser=firefox
+WebBrowser=custom-WebBrowser
+MailReader=geary
+MailReaderDismissed=true
+

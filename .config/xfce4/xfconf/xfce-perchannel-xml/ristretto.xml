@@ -5,7 +5,10 @@
     <property name="navigationbar" type="empty">
       <property name="position" type="string" value="left"/>
     </property>
-    <property name="height" type="uint" value="682"/>
-    <property name="width" type="uint" value="894"/>
+    <property name="height" type="uint" value="1373"/>
+    <property name="width" type="uint" value="1276"/>
+  </property>
+  <property name="file" type="empty">
+    <property name="current-uri" type="string" value=""/>
   </property>
 </channel>

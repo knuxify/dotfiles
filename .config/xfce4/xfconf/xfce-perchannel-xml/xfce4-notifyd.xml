@@ -7,8 +7,11 @@
   <property name="log-level-apps" type="uint" value="0"/>
   <property name="applications" type="empty">
     <property name="known_applications" type="array">
+      <value type="string" value=""/>
       <value type="string" value="audacious"/>
       <value type="string" value="blueman"/>
+      <value type="string" value="com.nextcloud.desktopclient.nextcloud"/>
+      <value type="string" value="com.uploadedlobster.peek"/>
       <value type="string" value="discord"/>
       <value type="string" value="FileZilla"/>
       <value type="string" value="Firefox"/>
@@ -16,12 +19,17 @@
       <value type="string" value="notify-send"/>
       <value type="string" value="OFTC - Status Buffer"/>
       <value type="string" value="org.clementine_player.Clementine"/>
+      <value type="string" value="org.gabmus.gfeeds"/>
       <value type="string" value="org.gnome.Boxes"/>
       <value type="string" value="org.gnome.Fractal"/>
+      <value type="string" value="org.gnome.Geary"/>
       <value type="string" value="org.gnome.Software"/>
       <value type="string" value="org.kde.kdenlive"/>
+      <value type="string" value="org.qbittorrent.qBittorrent"/>
       <value type="string" value="Spotify"/>
+      <value type="string" value="Strawberry"/>
       <value type="string" value="thunar"/>
+      <value type="string" value="Thunderbird"/>
       <value type="string" value="Xfce volume control"/>
       <value type="string" value="Xfce4-notifyd settings"/>
       <value type="string" value="xfce4-power-manager"/>

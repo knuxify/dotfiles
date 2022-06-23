@@ -48,7 +48,7 @@
         </property>
       </property>
       <property name="monitor0" type="empty">
-        <property name="image-path" type="string" value="/home/knuxify/.backgrounds/aef17c3bf0938c531287de40d1d6f640dbe958129be358f85d10dfcafc278f8baa5249705d1d4b05cb98fa60768233f758cba198c73c8c5553a9eda7db41761e.jpg"/>
+        <property name="image-path" type="string" value="/home/knuxify/Desktop/100OLYMP/P1010005.JPG"/>
         <property name="image-show" type="bool" value="true"/>
         <property name="image-style" type="int" value="0"/>
         <property name="workspace0" type="empty">
@@ -72,6 +72,13 @@
           <property name="color-style" type="int" value="0"/>
           <property name="image-style" type="int" value="3"/>
           <property name="last-image" type="string" value="/home/knuxify/.backgrounds/aef17c3bf0938c531287de40d1d6f640dbe958129be358f85d10dfcafc278f8baa5249705d1d4b05cb98fa60768233f758cba198c73c8c5553a9eda7db41761e.jpg"/>
+        </property>
+      </property>
+      <property name="monitorDisplayPort-2" type="empty">
+        <property name="workspace0" type="empty">
+          <property name="color-style" type="int" value="0"/>
+          <property name="image-style" type="int" value="5"/>
+          <property name="last-image" type="string" value="/home/knuxify/.backgrounds/Dusk.jpg"/>
         </property>
       </property>
     </property>
