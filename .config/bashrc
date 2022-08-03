@@ -1,12 +1,12 @@
 #!/bin/bash
 #-------------------------------#
-#	   knuxify's bashrc			#
-#	   rev. B					#
+#      knuxify's bashrc         #
+#      rev. B                   #
 #-------------------------------#
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+    . /etc/bashrc
 fi
 
 export GPG_TTY=$(tty)
@@ -18,85 +18,6 @@ alias als="ls -shA --color"
 
 alias iwdplz="sudo service iwd restart"
 
-_sort_for_filetype() {
-	# $1: directory
-	# $2: filetype
-	# $3: target
-
-	directory=$1
-	filetype=$2
-	target=$3
-
-	[ ! -e "$target" ] && mkdir -p "$target"
-
-	for file in "$directory/"*.$filetype; do
-		filename=$(basename "$file")
-		if [ ! -e "$target/$filename" ]; then
-			mv "$file" "$target"
-		else
-			echo "Conflict: $filename exists in $target"
-		fi
-	done
-}
-
-sortfiles() {
-	# Sorts out most files into specific directories.
-	# Usage: sortfiles [directory]
-	# If directory is not provided, assumes $PWD
-
-	if [ $1 ]; then
-		directory=$*
-	else
-		directory=$PWD
-	fi
-
-	if [ ! -d $directory ]; then
-		echo "Not a directory: $directory"
-		return 1
-	fi
-
-	for filetype in 'png' 'jpg' 'webp' 'gif' 'jpeg'; do
-		_sort_for_filetype "$directory" "$filetype" ~/Pictures
-	done
-
-	for filetype in 'mp4' 'webm' 'mov' 'avi' 'mkv'; do
-		_sort_for_filetype "$directory" "$filetype" ~/Videos
-	done
-
-	for filetype in 'mp3' 'ogg' 'wav'; do
-		_sort_for_filetype "$directory" "$filetype" ~/Music/unsorted
-	done
-
-	for filetype in 'docx' 'pdf' 'odt' 'ppt' 'doc'; do
-		_sort_for_filetype "$directory" "$filetype" ~/Documents
-	done
-}
-
-commitpkgs() {
-	git reset origin/master
-	for pkg in $*; do
-		source $pkg/APKBUILD;
-		git add $pkg;
-		git commit -m "testing/$pkg: new aport
- 
-$url
-$pkgdesc";
-	done
-	git push --force
-}
-
-commitpkgupdates() {
-	git reset origin/master
-	for pkg in $*; do
-		source $pkg/APKBUILD;
-		git add $pkg;
-		git commit -m "$pkg: upgrade to $pkgver"
-	done
-	git push --force
-}
-
-[[ -e ~/.gittoken ]] && source ~/.gittoken
-
 # Add local bin folder to path.
 export PATH=$PATH:~/.bin:~/.local/bin
 
@@ -107,163 +28,176 @@ shopt -s checkwinsize; shopt -s expand_aliases; shopt -s histappend
 # Some useful variables
 export EDITOR=nano
 
-masochist-mode() {
-	# masochist-mode - set up cm building environment
-	echo -e "\e[1;31mYou promised to not do that anymore.\e[0m Don't let me down."
-	#return 1
-	[[ "$1" ]] || {
-		echo "no directory specified!"
-		return 1
-	}
-	echo "Are you sure you want to waste the next ~24 hours? [Y/n] Y"
-	cd ~/lineage/"$1"
-	source ~/lineage/android/venv/bin/activate
-	source build/envsetup.sh
-	export JAVA_HOME=/usr/lib/jvm/java-7-openjdk
-	echo -e "\e[1;31mMASOCHIST MODE\e[0m enabled."
+alias tilde="mosh -ssh 'ssh -i ~/.ssh/tilde.town' knuxify@tilde.town"
+
+export PS1="\[\e[1;37m\]\`parse_git_branch\`\[\e[0m\]\W \[\e[1;33m\]>>\[\e[0m\] "
+
+alias "pushf=git push -f"
+alias at=apktoys
+
+alias sudo=doas
+export SUDO=doas
+
+_sort_for_filetype() {
+    # $1: directory
+    # $2: filetype
+    # $3: target
+
+    directory=$1
+    filetype=$2
+    target=$3
+
+    [ ! -e "$target" ] && mkdir -p "$target"
+
+    for file in "$directory/"*.$filetype; do
+        filename=$(basename "$file")
+        if [ ! -e "$target/$filename" ]; then
+            mv "$file" "$target"
+        else
+            echo "Conflict: $filename exists in $target"
+        fi
+    done
+}
+
+sortfiles() {
+    # Sorts out most files into specific directories.
+    # Usage: sortfiles [directory]
+    # If directory is not provided, assumes $PWD
+
+    if [ $1 ]; then
+        directory=$*
+    else
+        directory=$PWD
+    fi
+
+    if [ ! -d $directory ]; then
+        echo "Not a directory: $directory"
+        return 1
+    fi
+
+    for filetype in 'png' 'jpg' 'webp' 'gif' 'jpeg'; do
+        _sort_for_filetype "$directory" "$filetype" ~/Pictures
+    done
+
+    for filetype in 'mp4' 'webm' 'mov' 'avi' 'mkv'; do
+        _sort_for_filetype "$directory" "$filetype" ~/Videos
+    done
+
+    for filetype in 'mp3' 'ogg' 'wav'; do
+        _sort_for_filetype "$directory" "$filetype" ~/Music/unsorted
+    done
+
+    for filetype in 'docx' 'pdf' 'odt' 'ppt' 'doc'; do
+        _sort_for_filetype "$directory" "$filetype" ~/Documents
+    done
 }
 
 # proj - create a project or cd into one
 # usage: proj [project name or git link]
 proj() {
-	[[ ! -e "$HOME/projects" ]] && mkdir "$HOME/projects"
-	if [ -e "$HOME/projects/$*" ]; then
-		cd "$HOME/projects/$*"
-	else
-		projectnolink="${*/.git/}"; projectnolink="${projectnolink##*/}"
-		read -p "$projectnolink does not exist. Press any button to create." -ren1
-		if [[ "$*" = "https://github.com"* ]] || [[ "$*" = "https://gitlab.com"* ]] || [[ "$*" = *".git" ]]; then
-			cd $HOME/projects; git clone $*; cd "$projectnolink"
-		else
-			cd $HOME/projects; mkdir $*; cd $*
-		fi
-	fi
+    [[ ! -e "$HOME/projects" ]] && mkdir "$HOME/projects"
+    if [ -e "$HOME/projects/$*" ]; then
+        cd "$HOME/projects/$*"
+    else
+        projectnolink="${*/.git/}"; projectnolink="${projectnolink##*/}"
+        read -p "$projectnolink does not exist. Press any button to create." -ren1
+        if [[ "$*" = "https://github.com"* ]] || [[ "$*" = "https://gitlab.com"* ]] || [[ "$*" = *".git" ]]; then
+            cd $HOME/projects; git clone $*; cd "$projectnolink"
+        else
+            cd $HOME/projects; mkdir $*; cd $*
+        fi
+    fi
 }
-
-# today-i - daily activity logger
-# usage: today-i
-today-i() {
-	date=$(date +%Y-%m-%d)
-	[[ ! -e $diary_dir ]] && mkdir $diary_dir
-	date +%H:%M >> $diary_dir/$date
-	if [[ $* ]]; then
-		echo "$*" >> $diary_dir/$date
-	else
-		nano $diary_dir/$date
-	fi
-}
-yesterday-i() {
-	[[ ! -e $diary_dir ]] && mkdir $diary_dir
-	date --date="yesterday" +%H:%M >> $diary_dir/$(date --date="yesterday" +%Y-%m-%d)
-	nano $diary_dir/$(date --date="yesterday" +%Y-%m-%d)
-	#echo "$*" >> $diary_dir/$(date --date="yesterday" +%Y-%m-%d)
-}
-
-alias tilde="mosh -ssh 'ssh -i ~/.ssh/tilde.town' knuxify@tilde.town"
-
-hack() {
-	unset huser
-	[[ $2 ]] && huser="$2""@"
-	case $1 in
-		hc1|susie|104) ssh ${huser}192.168.1.104;;
-		satellite|mc|lancer|114) ssh ${huser}192.168.1.111;;
-		pi|muffet) ssh ${huser}192.168.1.103;;
-		tunnel) ssh -p 420 ${huser}user2.polaron.srv.jortage.com;;
-	esac
-}
-
-alias touchtoggle="xinput set-prop 'AlpsPS/2 ALPS GlidePoint' 315 $1"
-
-PS1="\W \[\e[0m\]> \[$(tput sgr0)\]"
 
 sng() {
-	sngtmp="$PWD"
-	mkdir -p /tmp/sng
-	cd /tmp/sng
-	yt-dlp -x --audio-format=mp3 --add-metadata --embed-thumbnail "$*"
-	cp * "$sngtmp"
-	cd "$sngtmp"
-	rm -rf /tmp/sng
-	unset sngtmp
+    sngtmp="$PWD"
+    mkdir -p /tmp/sng
+    cd /tmp/sng
+    yt-dlp -x --audio-format=mp3 --add-metadata --embed-thumbnail "$*"
+    cp * "$sngtmp"
+    cd "$sngtmp"
+    rm -rf /tmp/sng
+    unset sngtmp
 }
-
-alias "pesky=sudo rc-service postgresql start"
 
 # get current branch in git repo
 function parse_git_branch() {
-	BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
-	if [ ! "${BRANCH}" == "" ]
-	then
-		echo "[${BRANCH}] "
-	else
-		echo ""
-	fi
+    BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+    if [ ! "${BRANCH}" == "" ]
+    then
+        echo "[${BRANCH}] "
+    else
+        echo ""
+    fi
 }
 
-export PS1="\[\e[1;37m\]\`parse_git_branch\`\[\e[0m\]\W \[\e[1;33m\]>>\[\e[0m\] "
-
 newbranch() {
-	if [[ $2 ]]; then
-		git pull origin $1
-		git checkout $1 && \
-		git checkout -b $2
-	else
-		git pull origin
-		git checkout origin && \
-		git checkout -b $1
-	fi
+    if [[ $2 ]]; then
+        git pull origin $1
+        git checkout $1 && \
+        git checkout -b $2
+    else
+        git pull origin
+        git checkout origin && \
+        git checkout -b $1
+    fi
 }
 
 readyforpatch() {
-	git init
-	git add .
-	git commit -m "base" >/dev/null
+    git init
+    git add .
+    git commit -m "base" >/dev/null
 }
 
 makepatch() {
-	git add .
-	git commit -m "$*"
-	patch=$(git format-patch -1)
-	mv $patch ../..
-}
-
-tocommunity() {
-	newbranch $1-community
-	mv testing/$1 community/$1
-	git add testing/$1 community/$1
-	git commit -m "community/$1: move from testing"
-	git push --set-upstream knuxify $1-community
-}
-
-govern() {
-	if [ ! $1 ]; then echo "powersave or performance"; return 1; fi
-	echo $1 | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
-
+    git add .
+    git commit -m "$*"
+    patch=$(git format-patch -1)
+    mv $patch ../..
 }
 
 pushbranch() {
-	BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
-	git push --set-upstream knuxify $BRANCH
+    BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+    upstream=knuxify
+    [ $1 ] && upstream=$1
+    git push --set-upstream $upstream $BRANCH
 }
 
+nano() {
+	case $PWD in
+		*aspinwall*|*lapel*) /usr/bin/nano $*; return;;
+	esac
 
-nat() {
-	unexpand --tabs=4 "$*" > "$*.tmp"
-	mv "$*.tmp" "$*"
-	nano "$*"
-	expand --tabs=4 "$*" > "$*.tmp"
-	mv "$*.tmp" "$*"
+	local stop_parsing_args='false'
+	local args=''
+	local files=''
+	for arg in $*; do
+		case $arg in
+			--) stop_parsing_args='true';;
+			-*) [ $stop_parsing_args != 'true' ] && args="$args $arg";;
+			*) files="$files $arg";;
+		esac
+	done
+
+	for file in $files; do
+		case $file in
+			*.py) unexpand --tabs=4 "$file" > "$file.tmp";;
+			*.ui|*.yaml|*.yml) unexpand --tabs=2 "$file" > "$file.tmp";;
+		esac
+		[ -e "$file.tmp" ] && mv "$file.tmp" "$file"
+	done
+
+	/usr/bin/nano $args -- $files
+
+	for file in $files; do
+		case $file in
+			*.py) expand --tabs=4 "$file" > "$file.tmp";;
+			*.ui|*.yaml|*.yml) expand --tabs=2 "$file" > "$file.tmp";;
+		esac
+		[ -e "$file.tmp" ] && mv "$file.tmp" "$file"
+	done
 }
 
-natui() {
-	unexpand --tabs=2 "$*" > "$*.tmp"
-	mv "$*.tmp" "$*"
-	nano "$*"
-	expand --tabs=2 "$*" > "$*.tmp"
-	mv "$*.tmp" "$*"
+fw() {
+ssh -p420 -t -R $1:localhost:$1 dithernet.org -l knuxify "cd /home/knuxify/proxy; tcpproxy -lhost 0.0.0.0:$1 -rhost localhost:$1"
 }
-
-
-#alias nano=nat
-alias "pushf=git push -f"
-alias at=apktoys
