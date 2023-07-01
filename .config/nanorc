@@ -14,8 +14,10 @@ set zap
 set wordbounds
 set positionlog
 set afterends
-
 set minibar
+set indicator
+
+#set tabstospaces
 
 # keybindings
 bind ^X exit all
@@ -40,5 +42,8 @@ set functioncolor normal,normal
 set keycolor normal,normal
 set errorcolor brightred
 set numbercolor ,normal
+set stripecolor ,#444
+set numbercolor gray
+set scrollercolor #444,normal
 
 include ~/.config/nanorc/*

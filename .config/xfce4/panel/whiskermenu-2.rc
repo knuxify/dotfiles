@@ -1,5 +1,5 @@
 favorites=xfce4-web-browser.desktop,xfce4-mail-reader.desktop,xfce4-file-manager.desktop,xfce4-terminal-emulator.desktop
-recent=xfce4-file-manager.desktop,xfce4-terminal-emulator.desktop,org.polymc.PolyMC.desktop,xfce4-web-browser.desktop,audacity.desktop,org.gabmus.gfeeds.desktop,org.mozilla.firefox.desktop,com.discordapp.Discord.desktop,libreoffice-writer.desktop,com.spotify.Client.desktop
+recent=xfce4-terminal-emulator.desktop,com.discordapp.Discord.desktop,xfce4-mail-reader.desktop,xfce4-web-browser.desktop,xfce4-file-manager.desktop,xfce4-terminal.desktop,org.kicad.KiCad.gerbview.desktop,org.gpick.gpick.desktop,blueman-manager.desktop,solaar.desktop
 button-icon=xfce4-whiskermenu
 button-single-row=false
 show-button-title=false

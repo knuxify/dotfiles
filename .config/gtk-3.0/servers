@@ -43,4 +43,93 @@
       </metadata>
     </info>
   </bookmark>
+  <bookmark href="smb://192.168.1.104/zdjecia/" added="2022-08-12T10:19:16.156455Z" modified="2022-08-12T10:19:16.156461Z" visited="2022-08-12T10:19:16.156456Z">
+    <title>zdjecia on 192.168.1.104</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2022-08-12T10:19:16.156458Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="smb://192.168.50.247/" added="2022-08-20T17:50:38.903111Z" modified="2022-08-20T17:50:38.903116Z" visited="2022-08-20T17:50:38.903113Z">
+    <title>Windows shares on 192.168.50.247</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2022-08-20T17:50:38.903114Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="sftp://dithernet.org:420/" added="2022-08-20T18:12:06.831268Z" modified="2022-08-20T18:12:06.831273Z" visited="2022-08-20T18:12:06.831270Z">
+    <title>/ on dithernet.org</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2022-08-20T18:12:06.831271Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="smb://192.168.50.46/" added="2022-08-20T19:11:29.977031Z" modified="2022-08-20T19:13:00.811280Z" visited="2022-08-20T19:13:00.811276Z">
+    <title>Windows shares on 192.168.50.46</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2022-08-20T19:13:00.811278Z" count="2"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="smb://192.168.50.51/" added="2022-08-20T19:23:03.447718Z" modified="2022-08-21T15:57:30.415417Z" visited="2022-08-21T15:57:30.415414Z">
+    <title>Windows shares on 192.168.50.51</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2022-08-21T15:57:30.415416Z" count="2"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="smb://192.168.50.56/" added="2022-08-21T15:54:48.186718Z" modified="2022-09-15T17:27:43.641346Z" visited="2022-09-15T17:27:43.641343Z">
+    <title>Windows shares on 192.168.50.56</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2022-09-15T17:27:43.641344Z" count="3"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="smb:///192.168.50.56" added="2022-08-21T16:01:34.679187Z" modified="2022-08-21T16:01:34.679192Z" visited="2022-08-21T16:01:34.679188Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2022-08-21T16:01:34.679190Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="smb://susie/" added="2022-09-03T08:10:30.587675Z" modified="2022-09-03T08:10:30.587680Z" visited="2022-09-03T08:10:30.587676Z">
+    <title>Windows shares on susie</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2022-09-03T08:10:30.587678Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="smb://chmura.local/szko%C5%82a/" added="2023-02-08T16:57:30.309172Z" modified="2023-04-05T16:37:34.583399Z" visited="2023-04-05T16:37:34.583395Z">
+    <title>szkoła on chmura.local</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="LibreOffice 7.5" exec="&apos;soffice %u&apos;" modified="2023-04-05T16:37:34.583397Z" count="3"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
 </xbel>

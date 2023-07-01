@@ -26,6 +26,7 @@
       <value type="string" value="org.gnome.Software"/>
       <value type="string" value="org.kde.kdenlive"/>
       <value type="string" value="org.qbittorrent.qBittorrent"/>
+      <value type="string" value="solaar"/>
       <value type="string" value="Spotify"/>
       <value type="string" value="Strawberry"/>
       <value type="string" value="thunar"/>
