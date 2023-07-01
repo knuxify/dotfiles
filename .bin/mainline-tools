@@ -1,57 +1,94 @@
 #!/usr/bin/env -S echo 'Do not run this as a file! Use source instead.'
 
-#echo -e "\e[1;31mNope! Not letting you do that again.\e[0m Remember what you said?"
-#return 1
+mainline-package() {
+	if [ $DEVICE = 'samsung-baffinlite' ]; then
+		_dtb=bcm23550-baffinlite
+		_image=arm/boot/zImage
 
+		_base="0x81e00000"
+		_second_offset="0x00f00000"
+		_kernel_offset="0x00008000"
+		_ramdisk_offset="0x01000000"
+		_tags_offset="0x00000100"
+		_pagesize="4096"
+
+	elif [ $DEVICE = 'samsung-lt01wifi' ]; then
+		_dtb=exynos4212-tab3-wifi8
+		_image=arm/boot/zImage
+
+		_base="0x10000000"
+		_second_offset="0x00f00000"
+		_kernel_offset="0x00008000"
+		_ramdisk_offset="0x01000000"
+		_tags_offset="0x00000100"
+		_pagesize="2048"
+
+	elif [ $DEVICE = 'huawei-alice' ]; then
+		_dtb=hisilicon/hi6220-alice
+		_image=arm64/boot/Image
+
+		_base="0x07478000"
+		_second_offset="0x00f00000"
+		_kernel_offset="0x00008000"
+		_ramdisk_offset="0x07b88000"
+		_tags_offset="0x02988000"
+		_pagesize="2048"
+
+	else
+		echo "Unrecognized device $DEVICE"
+		return 1
+
+	fi		
+
+	cat ~/code/linux/.output/arch/$_image ~/code/linux/.output/arch/$_dtbarch/boot/dts/$_dtb.dtb > ~/code/linux/.zImage-dtb
+	sudo cp ~/code/linux/.zImage-dtb  "$TEMP"/zImage
+	sudo cp "/tmp/postmarketOS-export/boot.img" "$TEMP/boot.img"
+	sudo cp "/tmp/postmarketOS-export/initramfs" "$TEMP/initramfs"
+	pmbootstrap chroot -- mkbootimg-osm0sis \
+--kernel "/tmp/mainline/zImage" \
+--ramdisk "/tmp/mainline/initramfs" \
+--base $_base \
+--second_offset $_second_offset \
+--kernel_offset $_kernel_offset \
+--ramdisk_offset $_ramdisk_offset \
+--tags_offset $_tags_offset \
+--pagesize $_pagesize \
+-o "/tmp/mainline/boot.img"
+
+	cp "$TEMP"/boot.img ~/code/linux/boot.img
+}
+
+mainline-flash() {
+	if [ $DEVICE = 'samsung-baffinlite' ]; then
+		sudo heimdall flash --KERNEL ~/code/linux/boot.img
+	elif [ $DEVICE = 'samsung-lt01wifi' ]; then
+		sudo heimdall flash --BOOT ~/code/linux/boot.img
+	else
+		echo "Unrecognized device $DEVICE"
+		return 1
+	fi
+}
+
+mainline-package-3ds() {
+	cp ~/code/linux/.output/arch/arm/boot/zImage ~/linux3ds/linux/zImage
+	cp ~/code/linux/.output/arch/arm/boot/dts/nintendo3ds_ktr.dtb ~/linux3ds/linux/nintendo3ds_ktr.dtb
+}
+
+alias "mb=make -j24"
+alias "mf=mainline-flash"
+alias "mp=mainline-package"
+
+export DEVICE="$(pmbootstrap config device)"
 read -rep "[mainline-tools] Run initial setup? [Y/n] " tmp
 if [[ "$tmp" != "n" ]] && [[ "$tmp" != "N" ]]; then
-	[[ -e ~/projects/code ]] && mv ~/projects/code ~/code
+	cd ~/code/pmbootstrap
+	git pull
 	cd ~/code/linux
+	pmbootstrap export
 	pmbootstrap chroot -- apk add abootimg android-tools mkbootimg dtbtool
-	export DEVICE="$(pmbootstrap config device)"
 	export WORK="$(pmbootstrap config work)"
 	export TEMP="$WORK/chroot_native/tmp/mainline/"
 	mkdir -p "$TEMP"
 	source ~/code/pmbootstrap/helpers/envkernel.sh
 	export mainlinetools='enabled'
 fi
-
-mainline-build() {
-        case $1 in
-            "") defconfig="bcm23550_defconfig";;
-            *) defconfig="$2";;
-        esac
-        make $defconfig || return 1
-        make -j5 || return 1
-}
-mainline-package() {
-            echo "[mainline-tools] Packaging..."
-            read -rep "[mainline-tools] Run pmbootstrap export? [y/N] " tmp
-            if [[ "$tmp" == "y" ]] || [[ "$tmp" == "Y" ]]; then pmbootstrap export || return 1; fi
-            cd ~/code/linux/.output/arch/arm/boot
-            cat zImage dts/bcm23550-baffinlite.dtb > ~/code/linux/.zImage-dtb
-            cp ~/code/linux/.zImage-dtb "$TEMP"/zImage-dtb
-            cp "/tmp/postmarketOS-export/boot.img-$DEVICE-mainline" "$TEMP/boot.img"
-            pmbootstrap chroot -- abootimg -u /tmp/mainline/boot.img  -k /tmp/mainline/zImage-dtb -c "bootsize=8388608"  -c "kerneladdr=0x81e08000" -c "ramdiskaddr=0x82e00000" -c "tagsaddr=0x81e00100"
-            rm ~/boot.img
-            cp ~/.local/var/pmbootstrap/chroot_native/tmp/mainline/boot.img ~/boot.img
-			cd ~/code/linux
-}
-
-mainline-package-improved() {
-	cat ~/code/linux/.output/arch/arm/boot/zImage ~/code/linux/.output/arch/arm/boot/dts/bcm23550-baffinlite.dtb > ~/code/linux/.zImage-dtb
-	cp ~/code/linux/.zImage-dtb  "$TEMP"/zImage
-	cp "/tmp/postmarketOS-export/boot.img-$DEVICE" "$TEMP/boot.img"
-	cp "/tmp/postmarketOS-export/initramfs-$DEVICE" "$TEMP/initramfs"
-	pmbootstrap chroot -- mkbootimg-osm0sis \
---kernel "/tmp/mainline/zImage" \
---ramdisk "/tmp/mainline/initramfs" \
---base "0x81e00000" \
---second_offset "0x00f00000" \
---cmdline "console=ttyS2,115200n8 mem=736M ignore_loglevel PMOS_NO_OUTPUT_REDIRECT" \
---kernel_offset "0x00008000" \
---ramdisk_offset "0x01000000" \
---tags_offset "0x00000100" \
---pagesize "4096" \
--o "/tmp/mainline/boot.img"
-}
